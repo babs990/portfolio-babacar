@@ -1,0 +1,328 @@
+{
+  "common": {
+    "contactMe": "Contact me",
+    "languages": {
+      "label": "Language",
+      "en": "EN",
+      "fr": "FR"
+    },
+    "homeLink": "bndigit, back to home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "social": {
+      "linkedin": "LinkedIn profile (opens in a new tab)",
+      "behance": "Behance portfolio (opens in a new tab)"
+    },
+    "seeMore": "See more"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "search": "Search",
+    "allProjects": "All projects",
+    "contact": "Contact",
+    "articles": "Articles"
+  },
+  "hero": {
+    "greeting": "Hey there, I'm",
+    "name": "Serigne Khalifa Ababacar Sy Nguirane",
+    "tagline": "Passionate about crafting intuitive, modern web and mobile interfaces, I help companies build high-impact digital solutions, backed by a rigorous user-centered design approach.",
+    "photoAlt": "Serigne Khalifa Ababacar Sy Nguirane smiling, holding a laptop and a cup of coffee, surrounded by UX design, business goal, user research and product keywords"
+  },
+  "skills": {
+    "label": "Skills",
+    "uxDesign": "UX Design",
+    "mobileDesign": "Mobile Design",
+    "productThinking": "Product Thinking",
+    "research": "Research",
+    "designThinking": "Design thinking",
+    "prototyping": "Prototyping"
+  },
+  "home": {
+    "servicesPreview": {
+      "title": "My services",
+      "intro": "I help companies design modern, user-centered technology. My way of working is rooted in a user-centered approach: understanding people’s needs, frustrations and expectations to design experiences that are both simple and impactful."
+    },
+    "selectedProjects": {
+      "title": "My portfolio"
+    },
+    "aboutPreview": {
+      "photoAlt": "Portrait of Serigne Khalifa Ababacar Sy Nguirane, smiling, in a white shirt with arms crossed",
+      "text": "With a degree in computer science, I started out in development, with plenty of curiosity and little experience. Then came a moment of doubt: what should I specialize in? I looked at what truly defines me: I am organized, very attentive to detail, and I like to think before I act. Those traits naturally led me to front-end, where I quickly realized I was missing a real sense of usability. That is when I discovered Figma, and with it an immediate ease in building mockups. I trained, and realized that UX design is not just about drawing: it is about understanding user behavior to design products that genuinely serve them. Little by little, my interest widened from UX to product design, with a more holistic view of the product. Today, I have a clear direction, many projects behind me, and I am more ready than ever to go further."
+    },
+    "contactCta": {
+      "title": "TODO"
+    },
+    "gallery": {
+      "label": "Photo gallery",
+      "previous": "Previous photos",
+      "next": "Next photos",
+      "goTo": "Go to position {n} of {total}",
+      "photos": {
+        "p1": "Babacar presenting with a microphone at an EDACY Talent 4 Startups event, next to a fellow speaker",
+        "p2": "Babacar receiving a trophy at an EDACY event",
+        "p3": "Babacar and three OneHealthID teammates in red t-shirts in front of an event banner",
+        "p4": "Babacar speaking into a microphone in a OneHealthID t-shirt, in front of partner logos",
+        "p5": "Babacar working on a laptop with a teammate during a hackathon",
+        "p6": "Babacar standing arms crossed in a white SPOTS polo shirt with a badge, at an event",
+        "p7": "Babacar talking with a guest in a lilac hat during a SPOTS event",
+        "p8": "Babacar and a colleague sitting on a sofa, looking at their phones"
+      }
+    }
+  },
+  "about": {
+    "intro": "I am a Product UX/UI designer. I help companies design modern, user-centered technology. Thanks to my analytical and strategic skills, I have had the opportunity to contribute to large-scale projects, including the platform of Senegal’s National Assembly.",
+    "cv": "My CV",
+    "cvLabel": "My CV (PDF, opens in a new tab)",
+    "experience": {
+      "title": "My experience",
+      "present": "Present",
+      "current": "Current role",
+      "items": {
+        "mtn": {
+          "role": "Web Developer",
+          "company": "MTN Group IS"
+        },
+        "niane": {
+          "role": "UX/UI Designer",
+          "company": "Niane Technologies"
+        },
+        "etp4": {
+          "role": "Product Designer",
+          "company": "ETP4 (Digital Hub)"
+        },
+        "jant": {
+          "role": "Product Designer",
+          "company": "Jant Tech"
+        }
+      }
+    },
+    "awards": {
+      "title": "Awards & events",
+      "items": {
+        "edacyMajor": {
+          "title": "Valedictorian of the Product UX/UI Design program",
+          "issuer": "EDACY · Talent 4 Startups",
+          "description": "Top of cohort 3 of the Product Design (UX/UI) program, an award presented in Dakar for “Discipline, Rigor and Excellence”.",
+          "imageAlt": "EDACY glass trophy “Cohort 3 – Top of the Product Design (UX/UI) program” awarded to Serigne Khalifa A S Nguirane, Dakar, October 2025"
+        }
+      }
+    }
+  },
+  "services": {
+    "intro": {
+      "eyebrow": "My process",
+      "titleLine1": "I don’t start by drawing.",
+      "titleLine2": "I start by understanding.",
+      "text": "Mobile apps, web platforms and back-offices for entrepreneurs, companies and institutions across West Africa: designed around the people who will use them.",
+      "cta": "My process",
+      "imageAlt": "User flow of the Samba app: from opening the app to the home screen, then map, search, Samba AI (chat or voice), viewing a destination and guide mode"
+    },
+    "method": {
+      "title": "4 essential pillars",
+      "imageAlt": "Serigne Khalifa Ababacar Sy Nguirane, thoughtful, hand on chin, in front of the words product and user research",
+      "items": {
+        "understand": {
+          "title": "Understand",
+          "text": "I pin down the business need, the goals and the context of the project."
+        },
+        "listen": {
+          "title": "Listen",
+          "text": "I talk with users and stakeholders, and observe real-world usage."
+        },
+        "test": {
+          "title": "Test",
+          "text": "I validate my choices on a prototype before any code is written."
+        },
+        "build": {
+          "title": "Deliver",
+          "text": "I design the final mockups and prepare the handoff to developers."
+        }
+      }
+    },
+    "items": {
+      "mobile": {
+        "title": "Mobile app design",
+        "description": "Clear, enjoyable iOS and Android apps built for real-world use: smooth flows, readable interfaces and consistent components."
+      },
+      "web": {
+        "title": "Web app design",
+        "description": "Modern, responsive websites and web apps, from information architecture to high-fidelity mockups ready for development."
+      },
+      "research": {
+        "title": "User research & UX audit",
+        "description": "Interviews, usability tests and UX audits to understand your users and pinpoint what is holding your product back."
+      },
+      "prototype": {
+        "title": "Prototyping & design systems",
+        "description": "Interactive prototypes to test ideas fast, and design systems to keep the interface consistent as the product grows."
+      }
+    },
+    "example": {
+      "title": "A concrete example",
+      "text": "It all starts with a sheet of paper and a pencil. These sketches lay down the essentials: where the user searches, how they pick a destination, how they talk with their assistant. Once the structure is validated, it becomes a clear interface: a simple search, destinations within thumb’s reach, and two ways to talk with the assistant, by message or by voice. Same journey, same logic, but designed to be understood at first glance.",
+      "stepsLabel": "From problem to interface: persona, sketches, mockups",
+      "personaAlt": "Persona Awa, smiling, phone in hand at a café terrace in Dakar. Problem: Awa wants to discover places and activities without spending much, but she lacks reliable information, prices are not transparent, and organizing transport outside Dakar is difficult, which discourages her. Hypothesis: if the app offers places sorted by budget, Awa will easily find affordable activities; if prices are clear with promotions/deals, Awa will be more motivated to go out.",
+      "sketchesAlt": "Pencil sketches of two Samba app screens: the home screen with search, filters and a destination card, then the assistant chat screen (message or voice) with its history",
+      "screensAlt": "Final Samba app mockups: the home screen “Choose your next destination” featuring Lac Rose, and the message or voice chat screen with Samba and its history"
+    }
+  },
+  "projects": {
+    "items": {
+      "samba": {
+        "title": "Samba App",
+        "summary": "An artificial intelligence to transform local tourism",
+        "coverAlt": "Three screens of the Samba mobile app: discovering Senegal, diving into the culture and the Samba mascot",
+        "role": "UX/UI Design",
+        "field": "Tourism",
+        "slides": {
+          "s1": "Cover: the Samba app and its mascot, Samba the lion, with the tools used (Figma, Notion, Google Forms, ChatGPT)",
+          "s2": "About the project: goal, Samba app project, UX/UI role, tourism field, year 2026, with photos of Senegal",
+          "s3": "User research: 64% of tourism is consumed by locals, 80% of tourists find a local guide important, 50% face non-transparent pricing and no guide",
+          "s4": "Personas: Awa, young local explorer; Léa, international tourist; Mamadou, diaspora traveler, with their goals, frustrations, motivations and behaviors",
+          "s5": "Problem statement: a problem and a hypothesis for each of the three personas",
+          "s6": "“How might we” ideation: HMW questions and solution ideas on sticky notes",
+          "s7": "Impact / effort matrix used to prioritize features",
+          "s8": "Six-panel storyboard: a young woman discovers the Samba Travel app and visits a site with Samba",
+          "s9": "User flow: from opening the app to the home screen, Samba AI (chat or voice), search, map and guide mode",
+          "s10": "Sitemap: splash screen, onboarding, login, home, map, Samba AI, search, profile and destination page",
+          "s11": "Value proposition: the Samba mascot and the quote “thanks to AI and our mascot, we make tourism more human”",
+          "s12": "Wireframes: sketches of the home and Samba chat screens",
+          "s13": "Prototype – onboarding: meeting Samba, choosing the type of experience and the budget",
+          "s14": "Prototype – home page: search bar with filters, quick filters by region, destination cards and navbar",
+          "s15": "Prototype – Samba AI: message or voice discussion and conversation history",
+          "s16": "Prototype – chat with Samba: sending a message and an automatic answer with place suggestions",
+          "s17": "Prototype – voice discussion: talking to Samba and getting a voice answer with suggestions",
+          "s18": "Prototype – map and places: interactive map of tourist sites and the Lac Rose detail page",
+          "s19": "Thank you: splash, welcome and login screens of the Samba app"
+        }
+      }
+    },
+    "list": {
+      "eyebrow": "Portfolio",
+      "title": "My projects",
+      "intro": "Mobile apps, web platforms and SaaS products designed with and for their users: from research to final mockups.",
+      "filterLabel": "Filter projects by skill",
+      "all": "All",
+      "countOne": "{n} project",
+      "countOther": "{n} projects",
+      "empty": "No project for this filter yet."
+    },
+    "viewer": {
+      "label": "Case study",
+      "close": "Close project",
+      "by": "by",
+      "role": "Role",
+      "field": "Field",
+      "year": "Year",
+      "share": "Share",
+      "shareLabel": "Share this project",
+      "shareNative": "Share via…",
+      "copyLink": "Copy link",
+      "linkCopied": "Link copied!",
+      "shareLinkedin": "LinkedIn",
+      "shareWhatsapp": "WhatsApp",
+      "shareEmail": "Email",
+      "shareText": "Check out the “{title}” case study by Serigne Khalifa Ababacar Sy Nguirane",
+      "endTitle": "Thanks for going through this project",
+      "endText": "Have a similar project in mind? Let’s talk.",
+      "contact": "Contact me"
+    }
+  },
+  "contact": {
+    "title": "TODO",
+    "section": {
+      "eyebrow": "Contact",
+      "title": "Let’s talk about your project",
+      "intro": "An app idea, a product to improve or a collaboration in mind? Write to me: I reply within 48 hours.",
+      "whatsapp": "Chat on WhatsApp",
+      "whatsappMessage": "Hi Babacar, I found your portfolio and would love to talk with you.",
+      "socials": "Or find me on"
+    },
+    "form": {
+      "label": "Contact form",
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "subject": "Subject",
+      "optional": "optional",
+      "subjectPlaceholder": "E.g. redesign of a mobile app",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project, your goals and your timeline…",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "privacy": "Your details are only used to reply to you.",
+      "successTitle": "Message sent!",
+      "successText": "Thank you {name}, I received your message. A confirmation email is on its way to you.",
+      "sendAnother": "Send another message",
+      "error": "Sending failed. Please try again in a moment or reach me on WhatsApp.",
+      "errors": {
+        "required": "This field is required.",
+        "email": "Enter a valid email address.",
+        "minlength": "Your message is a bit short (10 characters minimum).",
+        "maxlength": "This text is too long."
+      }
+    },
+    "mail": {
+      "ownerSubject": "New portfolio message: {name}",
+      "autoresponse": "Hi {name},\n\nThank you for your message! I received it and will get back to you as soon as possible, usually within 48 hours.\n\nTalk soon,\nSerigne Khalifa Ababacar Sy Nguirane\nUX / Product Designer",
+      "replySubject": "Thanks for your message, {name}!"
+    }
+  },
+  "notFound": {
+    "title": "TODO",
+    "backHome": "TODO"
+  },
+  "footer": {
+    "label": "Footer navigation",
+    "copyright": "{year} {name}",
+    "homeLink": "bndigit, back to home"
+  },
+  "search": {
+    "label": "Search the site",
+    "placeholder": "Search a page, a section, a skill…",
+    "close": "Close search",
+    "escKey": "Esc",
+    "suggestions": "Suggestions",
+    "results": "Results",
+    "noResults": "No matching section.",
+    "hint": "↑ ↓ to navigate · Enter to open · Esc to close · Ctrl/⌘ K to search",
+    "entries": {
+      "skills": "Skills",
+      "selectedProjects": "My portfolio",
+      "method": "My process: 4 pillars",
+      "aboutPreview": "About me",
+      "servicesPreview": "My services",
+      "gallery": "Gallery",
+      "contactCta": "Contact form",
+      "experience": "My experience",
+      "awards": "Awards & events",
+      "example": "Concrete example: Samba"
+    },
+    "keywords": {
+      "home": "home, welcome, intro, start",
+      "about": "about, profile, biography, background, experience, who",
+      "services": "services, what I do, expertise",
+      "projects": "projects, portfolio, work, case studies",
+      "contact": "contact, email, message, hire, get in touch",
+      "skills": "skills, ux design, mobile design, product thinking, research, design thinking, prototyping",
+      "selectedProjects": "selected projects, featured, best work, portfolio",
+      "method": "method, process, approach, steps, pillars, understand, listen, test, deliver",
+      "aboutPreview": "about, background, story, profile, who am i, education",
+      "servicesPreview": "services, mobile design, web design, user research, prototyping, design system",
+      "gallery": "gallery, photos, events, hackathon, talks, award, onehealthid, edacy",
+      "contactCta": "contact, form, message, email, whatsapp, quote, hire, work together",
+      "articles": "articles, blog, writing, posts, thoughts",
+      "experience": "experience, career, background, jobs, jant tech, etp4, niane technologies, mtn, product designer, ux/ui designer",
+      "awards": "awards, prizes, trophy, valedictorian, top of class, edacy, events, certifications",
+      "example": "example, case study, sketches, wireframes, mockups, persona, problem, hypothesis, samba"
+    }
+  },
+  "articles": {
+    "title": "TODO"
+  }
+}

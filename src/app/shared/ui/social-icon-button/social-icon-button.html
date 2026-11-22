@@ -1,0 +1,32 @@
+@let social = link();
+@let small = size() === 'sm';
+<a
+  class="inline-flex items-center justify-center rounded-pill"
+  [class.btn-primary]="!small"
+  [class.size-13]="!small"
+  [class.btn-outline]="small"
+  [class.size-10]="small"
+  [attr.href]="social.url || null"
+  [attr.target]="social.url ? '_blank' : null"
+  [attr.rel]="social.url ? 'noopener noreferrer' : null"
+  [attr.aria-label]="social.labelKey | translate"
+>
+  <!-- Brand glyphs: icons, not copy (hence no i18n). -->
+  <svg
+    class="w-auto"
+    [class.h-5]="!small"
+    [class.h-4]="small"
+    viewBox="0 0 24 20"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    @switch (social.platform) {
+      @case ('linkedin') {
+        <text x="12" y="17" text-anchor="middle" font-size="20" font-weight="700">in</text>
+      }
+      @case ('behance') {
+        <text x="12" y="17" text-anchor="middle" font-size="18" font-weight="700">Bē</text>
+      }
+    }
+  </svg>
+</a>

@@ -1,0 +1,48 @@
+<section id="intro" class="overflow-x-clip" aria-labelledby="services-title">
+  <div class="container-site grid-site items-center gap-y-10 py-14 lg:min-h-[41.75rem] lg:py-16">
+    <!-- User-flow card (tilt, dashed outline and shadow are part of the image) -->
+    <div class="col-span-full animate-fade-in lg:col-span-5">
+      <img
+        class="mx-auto h-auto w-full max-w-[28rem] lg:mx-0 lg:w-[90%] lg:max-w-none"
+        ngSrc="assets/images/services-process.webp"
+        width="984"
+        height="886"
+        priority
+        [alt]="'services.intro.imageAlt' | translate"
+      />
+    </div>
+
+    <div class="col-span-full flex animate-fade-in-up flex-col lg:col-span-7 lg:pl-10">
+      <p
+        class="self-start -rotate-[4deg] rounded-pill bg-primary-soft px-4 py-0.5 text-base text-primary"
+      >
+        {{ 'services.intro.eyebrow' | translate }}
+      </p>
+
+      <h1
+        id="services-title"
+        class="mt-4 text-[clamp(1.75rem,2.78vw,2.5rem)] leading-[1.3] font-bold text-primary lg:leading-[1.6]"
+      >
+        <span class="block">{{ 'services.intro.titleLine1' | translate }}</span>
+        <span class="block">{{ 'services.intro.titleLine2' | translate }}</span>
+      </h1>
+
+      <p class="mt-5 max-w-[40.25rem] text-base leading-[1.75] text-ink sm:text-lg">
+        {{ 'services.intro.text' | translate }}
+      </p>
+
+      <a appButton class="mt-7 self-center" routerLink="/services" fragment="method">
+        {{ 'services.intro.cta' | translate }}
+        <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path
+            d="M8 3v10m0 0 4-4m-4 4-4-4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

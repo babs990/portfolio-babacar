@@ -1,0 +1,96 @@
+@if (search.isOpen()) {
+  <div
+    class="fixed inset-0 z-50 flex animate-fade-in items-start justify-center bg-ink/40 px-4 pt-[12vh] backdrop-blur-sm"
+    (click)="onBackdropClick($event)"
+  >
+    <div
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="'search.label' | translate"
+      class="w-full max-w-xl animate-fade-in-up overflow-hidden rounded-card border border-line bg-surface shadow-2xl shadow-primary/15"
+    >
+      <!-- Field -->
+      <div class="flex items-center gap-3 border-b border-line px-5">
+        <svg
+          class="size-5 shrink-0 text-primary"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="7.25" stroke="currentColor" stroke-width="1.75" />
+          <path
+            d="m16.5 16.5 4 4"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+          />
+        </svg>
+        <input
+          #input
+          type="text"
+          role="combobox"
+          autocomplete="off"
+          spellcheck="false"
+          aria-autocomplete="list"
+          aria-controls="search-results"
+          [attr.aria-expanded]="results().length > 0"
+          [attr.aria-activedescendant]="results().length ? 'search-option-' + activeIndex() : null"
+          [attr.aria-label]="'search.label' | translate"
+          [placeholder]="'search.placeholder' | translate"
+          [value]="query()"
+          (input)="onInput($event)"
+          (keydown)="onInputKeydown($event)"
+          class="h-14 min-w-0 flex-1 bg-transparent text-base text-ink placeholder:text-muted focus:outline-none focus-visible:outline-none"
+        />
+        <button
+          type="button"
+          class="shrink-0 rounded-pill border border-line px-2.5 py-0.5 text-xs text-muted transition-colors hover:border-primary hover:text-primary"
+          [attr.aria-label]="'search.close' | translate"
+          (click)="search.close()"
+        >
+          {{ 'search.escKey' | translate }}
+        </button>
+      </div>
+
+      <!-- Suggestions -->
+      <p
+        class="px-5 pt-4 pb-2 text-xs font-medium tracking-wider text-muted uppercase"
+        aria-hidden="true"
+      >
+        {{ (query() ? 'search.results' : 'search.suggestions') | translate }}
+      </p>
+
+      @if (results().length) {
+        <ul id="search-results" role="listbox" class="max-h-[50vh] overflow-y-auto px-2 pb-2">
+          @for (entry of results(); track entry.id) {
+            <li
+              [id]="'search-option-' + $index"
+              role="option"
+              data-cursor="hover"
+              [attr.aria-selected]="$index === activeIndex()"
+              class="flex cursor-pointer items-center justify-between gap-4 rounded-pill px-4 py-2.5 text-ink aria-selected:bg-primary aria-selected:text-primary-contrast"
+              (pointermove)="activeIndex.set($index)"
+              (click)="go(entry)"
+            >
+              <span class="truncate text-base">{{ entry.titleKey | translate }}</span>
+              @if (entry.fragment) {
+                <span class="shrink-0 text-sm opacity-70">{{ entry.pageKey | translate }}</span>
+              }
+            </li>
+          }
+        </ul>
+      } @else {
+        <p id="search-results" class="px-5 pb-6 text-base text-muted" role="status">
+          {{ 'search.noResults' | translate }}
+        </p>
+      }
+
+      <p
+        class="hidden border-t border-line px-5 py-3 text-xs text-muted sm:block"
+        aria-hidden="true"
+      >
+        {{ 'search.hint' | translate }}
+      </p>
+    </div>
+  </div>
+}

@@ -1,0 +1,57 @@
+/*
+ * Design journey (Figma at 1440): persona 276px → arrow → sketches 343px → arrow → screens
+ * 394px, vertically centered, spread over the container. Mobile: stacked, arrows turned down.
+ */
+.journey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.journey__step--persona {
+  width: min(100%, 17.25rem);
+}
+
+.journey__step--sketches {
+  width: min(100%, 21.5rem);
+}
+
+.journey__step--screens {
+  width: min(100%, 24.625rem);
+}
+
+.journey__arrow {
+  width: 4.75rem;
+  color: color-mix(in srgb, var(--color-primary) 80%, transparent);
+  transform: rotate(90deg);
+}
+
+.journey__arrow path {
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.journey__arrow path:first-child {
+  stroke-dasharray: 5 5;
+}
+
+@media (width >= 64rem) {
+  .journey {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .journey__step {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .journey__arrow {
+    flex-shrink: 0;
+    transform: none;
+  }
+}

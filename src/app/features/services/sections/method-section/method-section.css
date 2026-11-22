@@ -1,0 +1,176 @@
+/*
+ * 4 pillars around a circular portrait (Figma at 1440: circle 394px, rows at 47px and
+ * 277px below its top). Mobile: circle first, then the pillars in a simple list.
+ */
+.pillars {
+  display: grid;
+  gap: 2rem;
+}
+
+.pillars__circle {
+  order: -1;
+  width: min(100%, 22rem);
+  margin-inline: auto;
+}
+
+.pillars__side {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.pillar__title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.pillar__text {
+  max-width: 12.75rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-ink);
+}
+
+.pillar__line {
+  display: none;
+}
+
+/* Reveal (text) */
+.pillar {
+  transition:
+    opacity var(--duration-slow) var(--ease-out-soft) 250ms,
+    transform var(--duration-slow) var(--ease-out-soft) 250ms;
+}
+
+:host(:not(.is-revealed)) .pillar {
+  opacity: 0;
+  transform: translate3d(0, 0.75rem, 0);
+}
+
+@media (width >= 40rem) and (width < 64rem) {
+  .pillars {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pillars__circle {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (width >= 64rem) {
+  .pillars {
+    grid-template-columns: minmax(0, 1fr) 24.625rem minmax(0, 1fr);
+    gap: 0;
+    height: 24.625rem;
+  }
+
+  .pillars__circle {
+    order: 0;
+    width: 100%;
+  }
+
+  .pillars__side {
+    position: relative;
+    display: block;
+  }
+
+  .pillar {
+    position: absolute;
+    inset-inline: 0;
+    top: var(--top);
+  }
+
+  /* Title centers at 47px / 277px below the circle top; --reach = circle edge inset. */
+  .pillar--row1 {
+    --top: 2.0625rem;
+    --reach: 4rem;
+  }
+
+  .pillar--row2 {
+    --top: 16.4375rem;
+    --reach: 0.75rem;
+  }
+
+  .pillar__head {
+    display: flex;
+    align-items: center;
+  }
+
+  .pillar__title {
+    flex: 0 0 14rem;
+  }
+
+  .pillar__line {
+    display: block;
+    position: relative;
+    flex: 1 1 auto;
+    height: 0;
+    border-top: 1.5px dashed color-mix(in srgb, var(--color-primary) 70%, transparent);
+    transition: transform 900ms var(--ease-out-soft);
+  }
+
+  /* Arrow tip, on the text side. */
+  .pillar__line::before {
+    content: '';
+    position: absolute;
+    top: -0.25rem;
+    width: 0.4375rem;
+    height: 0.4375rem;
+    border: solid color-mix(in srgb, var(--color-primary) 70%, transparent);
+  }
+
+  /* Left side: text then arrow → circle; the arrow points back to the text. */
+  .pillars__side--left .pillar {
+    padding-left: 2.5rem;
+  }
+
+  .pillars__side--left .pillar--row2 {
+    padding-left: 3.3rem;
+  }
+
+  .pillars__side--left .pillar__line {
+    margin: 0 calc(-1 * var(--reach)) 0 1rem;
+    transform-origin: right;
+  }
+
+  .pillars__side--left .pillar__line::before {
+    left: 0;
+    border-width: 0 0 1.5px 1.5px;
+    transform: rotate(45deg);
+  }
+
+  /* Right side: mirrored. */
+  .pillars__side--right .pillar {
+    padding-right: 1.3rem;
+  }
+
+  .pillars__side--right .pillar__head {
+    flex-direction: row-reverse;
+  }
+
+  .pillars__side--right .pillar__line {
+    margin: 0 1rem 0 calc(-1 * var(--reach));
+    transform-origin: left;
+  }
+
+  .pillars__side--right .pillar__line::before {
+    right: 0;
+    border-width: 1.5px 1.5px 0 0;
+    transform: rotate(45deg);
+  }
+
+  /* Description starts at the title's left edge (title column = last 14rem). */
+  .pillars__side--right .pillar__text {
+    margin-left: calc(100% - 14rem);
+  }
+
+  :host(:not(.is-revealed)) .pillar__line {
+    transform: scaleX(0);
+  }
+
+  :host(:not(.is-revealed)) .pillar {
+    transform: none;
+  }
+}

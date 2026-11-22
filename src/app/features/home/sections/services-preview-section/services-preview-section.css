@@ -1,0 +1,31 @@
+/*
+ * Figma: horizontal gradient primary → primary-bright, under the same mandala texture
+ * as the hero. The texture is a white layer flattened on black, so `screen` blends it
+ * exactly like in the mock-up (measured edges #8b1a35 → #ce274f).
+ */
+.services-preview {
+  background-color: var(--color-primary);
+  background-image:
+    url('/assets/images/hero-pattern.webp'),
+    linear-gradient(95deg, var(--color-primary), var(--color-primary-bright));
+  background-size: cover, auto;
+  background-position: center;
+  background-blend-mode: screen, normal;
+}
+
+/* Cards: transparent with a 25% white hairline; smooth lift + light wash on hover. */
+.service-card {
+  border: 1px solid color-mix(in srgb, white 25%, transparent);
+  transition:
+    background-color var(--duration-hover) var(--ease-out-soft),
+    border-color var(--duration-hover) var(--ease-out-soft),
+    transform var(--duration-hover) var(--ease-out-soft);
+}
+
+@media (hover: hover) {
+  .service-card:hover {
+    background-color: color-mix(in srgb, white 6%, transparent);
+    border-color: color-mix(in srgb, white 45%, transparent);
+    transform: translate3d(0, -4px, 0);
+  }
+}

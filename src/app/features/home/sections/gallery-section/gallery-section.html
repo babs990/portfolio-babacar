@@ -1,0 +1,84 @@
+<section
+  id="gallery"
+  class="py-16 lg:pt-[6.25rem] lg:pb-24"
+  [attr.aria-label]="'home.gallery.label' | translate"
+  (pointerenter)="setHovering(true)"
+  (pointerleave)="setHovering(false)"
+  (focusin)="onFocusIn($event)"
+  (focusout)="onFocusOut()"
+>
+  <!-- Full-bleed strip (Figma: starts at the left edge, last photo cut on the right). -->
+  <ul #track class="gallery__track flex snap-x snap-mandatory gap-6 overflow-x-auto lg:gap-12">
+    @for (photo of photos; track photo.src) {
+      <li
+        class="gallery__item shrink-0 snap-start"
+        [style.--photo-w]="photo.width / referenceWidth"
+      >
+        <img
+          class="h-auto w-full select-none"
+          draggable="false"
+          [ngSrc]="'assets/images/' + photo.src"
+          [width]="photo.width"
+          [height]="photo.height"
+          [alt]="photo.altKey | translate"
+        />
+      </li>
+    }
+  </ul>
+
+  <!-- Pagination -->
+  <div class="container-site mt-10 flex items-center justify-center gap-5">
+    <button
+      type="button"
+      class="btn-outline inline-flex size-10 items-center justify-center rounded-pill"
+      [disabled]="atStart()"
+      [attr.aria-label]="'home.gallery.previous' | translate"
+      (click)="previous()"
+    >
+      <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path
+          d="M10 3.5 5.5 8l4.5 4.5"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+
+    <div class="flex items-center">
+      @for (stop of stops(); track $index) {
+        <button
+          type="button"
+          class="gallery__dot"
+          [class.is-active]="$index === active()"
+          [attr.aria-current]="$index === active() ? 'true' : null"
+          [attr.aria-label]="
+            'home.gallery.goTo' | translate: { n: $index + 1, total: stops().length }
+          "
+          (click)="goTo($index)"
+        >
+          <span class="gallery__dot-mark"></span>
+        </button>
+      }
+    </div>
+
+    <button
+      type="button"
+      class="btn-outline inline-flex size-10 items-center justify-center rounded-pill"
+      [disabled]="atEnd()"
+      [attr.aria-label]="'home.gallery.next' | translate"
+      (click)="next()"
+    >
+      <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path
+          d="M6 3.5 10.5 8 6 12.5"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </div>
+</section>

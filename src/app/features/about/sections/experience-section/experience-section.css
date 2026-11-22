@@ -1,0 +1,188 @@
+/*
+ * Vertical experience "branch".
+ * Mobile: rail on the left, cards on the right.
+ * Desktop (lg): rail in the middle, cards alternating left / right, each joined to its
+ * node by a short horizontal stem. An arrow tip ends the branch (toward the present).
+ */
+.xp-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.xp {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  column-gap: 1rem;
+}
+
+.xp__rail {
+  position: relative;
+}
+
+/* Segment: runs down to the next item so the cells form one continuous branch. */
+.xp__rail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: -1.25rem;
+  left: calc(50% - 1px);
+  width: 2px;
+  background: var(--color-line);
+  transform-origin: top;
+  transition: transform var(--duration-slow) var(--ease-out-soft) calc(var(--i) * 180ms);
+}
+
+.xp--last .xp__rail::before {
+  bottom: 0;
+}
+
+/* Arrow tip at the bottom of the branch. */
+.xp--last .xp__rail::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-right: 2px solid var(--color-line);
+  border-bottom: 2px solid var(--color-line);
+  transform: translateX(-50%) rotate(45deg);
+  transition: opacity var(--duration-base) var(--ease-out-soft) calc(var(--i) * 180ms + 300ms);
+}
+
+.xp__node {
+  position: absolute;
+  top: 1.4rem;
+  left: 50%;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-left: -0.4375rem;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  background: var(--color-background);
+  transition: transform var(--duration-base) var(--ease-out-soft) calc(var(--i) * 180ms + 200ms);
+}
+
+.xp__node.is-current {
+  background: var(--color-primary);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-primary) 45%, transparent);
+  animation: xp-pulse 2.4s var(--ease-out-soft) infinite;
+}
+
+.xp__card {
+  position: relative;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-line);
+  border-radius: 1.25rem;
+  background: var(--color-surface);
+  transition:
+    opacity var(--duration-slow) var(--ease-out-soft) calc(var(--i) * 180ms + 150ms),
+    transform var(--duration-slow) var(--ease-out-soft) calc(var(--i) * 180ms + 150ms),
+    border-color var(--duration-hover) var(--ease-out-soft),
+    box-shadow var(--duration-hover) var(--ease-out-soft);
+}
+
+@media (hover: hover) {
+  .xp__card:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
+    box-shadow: 0 1.25rem 2.5rem -1.5rem color-mix(in srgb, var(--color-primary) 30%, transparent);
+  }
+}
+
+/* Reveal: hidden until the section enters the viewport. */
+:host(:not(.is-revealed)) .xp__rail::before {
+  transform: scaleY(0);
+}
+
+:host(:not(.is-revealed)) .xp--last .xp__rail::after {
+  opacity: 0;
+}
+
+:host(:not(.is-revealed)) .xp__node {
+  transform: scale(0);
+}
+
+:host(:not(.is-revealed)) .xp__card {
+  opacity: 0;
+  transform: translate3d(1rem, 0, 0);
+}
+
+@media (width >= 64rem) {
+  .xp-track {
+    gap: 1.5rem;
+  }
+
+  .xp {
+    grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1fr);
+    column-gap: 0;
+  }
+
+  .xp__rail {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .xp__rail::before {
+    bottom: -1.5rem;
+  }
+
+  .xp--last .xp__rail::before {
+    bottom: 0;
+  }
+
+  .xp__node {
+    top: 50%;
+    margin-top: -0.4375rem;
+  }
+
+  .xp__card {
+    grid-column: 3;
+    grid-row: 1;
+    margin-left: 1.25rem;
+  }
+
+  /* Left-hand cards: mirrored, text aligned toward the branch. */
+  .xp--left .xp__card {
+    grid-column: 1;
+    margin: 0 1.25rem 0 0;
+    text-align: right;
+  }
+
+  .xp--left .xp__meta {
+    justify-content: flex-end;
+  }
+
+  /* Horizontal stem from the card to its node. */
+  .xp__card::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 100%;
+    width: 1.25rem;
+    height: 2px;
+    background: var(--color-line);
+  }
+
+  .xp--left .xp__card::before {
+    right: auto;
+    left: 100%;
+  }
+
+  :host(:not(.is-revealed)) .xp--left .xp__card {
+    transform: translate3d(-1rem, 0, 0);
+  }
+}
+
+@keyframes xp-pulse {
+  70%,
+  100% {
+    box-shadow: 0 0 0 0.6rem color-mix(in srgb, var(--color-primary) 0%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xp__node.is-current {
+    animation: none;
+  }
+}

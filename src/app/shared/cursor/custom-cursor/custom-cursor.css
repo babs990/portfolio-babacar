@@ -1,0 +1,67 @@
+/*
+ * Two layers per element:
+ *  - outer element: positioned every frame with translate3d (JS, no transition)
+ *  - inner shape: scale states (hover / press) with a CSS transition
+ */
+:host {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :host {
+    display: contents;
+  }
+}
+
+.cursor-ring,
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity var(--duration-base) var(--ease-out-soft);
+}
+
+:host(.is-visible) .cursor-ring,
+:host(.is-visible) .cursor-dot {
+  opacity: 1;
+}
+
+.cursor-ring {
+  width: var(--cursor-ring-size);
+  height: var(--cursor-ring-size);
+  margin: calc(var(--cursor-ring-size) / -2) 0 0 calc(var(--cursor-ring-size) / -2);
+}
+
+.cursor-ring__shape {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: var(--cursor-ring-border) solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  transition: transform var(--duration-base) var(--ease-out-soft);
+}
+
+:host(.is-hover) .cursor-ring__shape {
+  transform: scale(var(--cursor-hover-scale));
+}
+
+:host(.is-pressed) .cursor-ring__shape {
+  transform: scale(var(--cursor-press-scale));
+}
+
+:host(.is-hover.is-pressed) .cursor-ring__shape {
+  transform: scale(calc(var(--cursor-hover-scale) * var(--cursor-press-scale)));
+}
+
+.cursor-dot {
+  width: var(--cursor-dot-size);
+  height: var(--cursor-dot-size);
+  margin: calc(var(--cursor-dot-size) / -2) 0 0 calc(var(--cursor-dot-size) / -2);
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+}

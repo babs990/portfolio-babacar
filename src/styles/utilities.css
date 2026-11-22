@@ -1,0 +1,163 @@
+/*
+ * Project utilities, declared with Tailwind v4's @utility so they support
+ * variants (md:, hover:...) and are tree-shaken when unused.
+ *
+ * Layout system: content lives in a centered column of width
+ *   min(100% - 2 x --spacing-gutter, --container-max)
+ * split into --grid-columns (4 / 8 / 12) separated by --grid-gutter.
+ * (= the Figma layout grid, which is NOT drawn on the page).
+ */
+
+/* Centered content column (no inner padding: the margin is outside). */
+@utility container-site {
+  width: min(100% - 2 * var(--spacing-gutter), var(--container-max));
+  margin-inline: auto;
+}
+
+/* Column grid matching the Figma layout grid. Use col-span-* on children. */
+@utility grid-site {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--grid-gutter);
+}
+
+/* Vertical rhythm between page sections. */
+@utility section-y {
+  padding-block: var(--spacing-section);
+
+  @media (width >= 64rem) {
+    padding-block: var(--spacing-section-lg);
+  }
+}
+
+/*
+ * Filled primary control (CTA, round social buttons).
+ * Smooth hover: lighter burgundy + 2px lift + soft shadow, GPU-friendly (transform only
+ * for motion). Hover styles only on real hover devices to avoid "sticky hover" on touch.
+ */
+@utility btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+  box-shadow: 0 0 0 0 transparent;
+  transition:
+    background-color var(--duration-hover) var(--ease-out-soft),
+    box-shadow var(--duration-hover) var(--ease-out-soft),
+    transform var(--duration-hover) var(--ease-out-soft);
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-primary-hover);
+      box-shadow: 0 0.75rem 1.5rem -0.75rem
+        color-mix(in srgb, var(--color-primary) 60%, transparent);
+      transform: translate3d(0, -2px, 0);
+    }
+  }
+
+  &:focus-visible {
+    background-color: var(--color-primary-hover);
+  }
+
+  &:active {
+    transform: translate3d(0, 0, 0) scale(0.97);
+    transition-duration: var(--duration-fast);
+  }
+}
+
+/*
+ * Light pill control for dark/primary backgrounds (services "See more"):
+ * cream fill + primary text. Same smooth motion as btn-primary; hover turns surface-white.
+ */
+@utility btn-light {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  box-shadow: 0 0 0 0 transparent;
+  transition:
+    background-color var(--duration-hover) var(--ease-out-soft),
+    box-shadow var(--duration-hover) var(--ease-out-soft),
+    transform var(--duration-hover) var(--ease-out-soft);
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-surface);
+      box-shadow: 0 0.75rem 1.5rem -0.75rem color-mix(in srgb, var(--color-ink) 45%, transparent);
+      transform: translate3d(0, -2px, 0);
+    }
+  }
+
+  &:focus-visible {
+    background-color: var(--color-surface);
+    outline-color: var(--color-background);
+  }
+
+  &:active {
+    transform: translate3d(0, 0, 0) scale(0.97);
+    transition-duration: var(--duration-fast);
+  }
+}
+
+/*
+ * Outlined primary control (gallery arrows): no fill, 1.5px burgundy border.
+ * Smooth hover (same timing as btn-primary): lighter border/icon + 2px lift.
+ * Disabled: faded, no hover.
+ */
+@utility btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  transition:
+    color var(--duration-hover) var(--ease-out-soft),
+    border-color var(--duration-hover) var(--ease-out-soft),
+    opacity var(--duration-hover) var(--ease-out-soft),
+    transform var(--duration-hover) var(--ease-out-soft);
+
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      color: var(--color-primary-hover);
+      border-color: var(--color-primary-hover);
+      transform: translate3d(0, -2px, 0);
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: translate3d(0, 0, 0) scale(0.95);
+    transition-duration: var(--duration-fast);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+/*
+ * Filter chip (Projects page): pill with a hairline border; burgundy text/border on hover,
+ * filled burgundy when selected (`aria-pressed="true"`). Same smooth timing as buttons.
+ */
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  height: 2.25rem;
+  padding-inline: 1rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  color: var(--color-ink);
+  font-size: 0.875rem;
+  transition:
+    background-color var(--duration-hover) var(--ease-out-soft),
+    border-color var(--duration-hover) var(--ease-out-soft),
+    color var(--duration-hover) var(--ease-out-soft);
+
+  @media (hover: hover) {
+    &:hover:not([aria-pressed='true']) {
+      border-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+      color: var(--color-primary);
+    }
+  }
+
+  &[aria-pressed='true'] {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+  }
+}

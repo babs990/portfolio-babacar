@@ -1,0 +1,183 @@
+/* Behance-style overlay: dark backdrop, scrolling layer, paper sheet. */
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+
+.viewer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-ink) 82%, transparent);
+  backdrop-filter: blur(4px);
+  animation: var(--animate-fade-in);
+}
+
+.viewer__scroller {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  outline: none;
+  scrollbar-color: color-mix(in srgb, white 45%, transparent) transparent;
+}
+
+.viewer__scroller::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, white 45%, transparent);
+  border-color: transparent;
+}
+
+.viewer__scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Reading progress (CSS scroll-driven animation: no JS; hidden where unsupported). */
+.viewer__progress {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  height: 3px;
+  background: var(--color-primary-bright);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@supports (animation-timeline: scroll()) {
+  .viewer__progress {
+    display: block;
+    animation: viewer-progress linear both;
+    animation-timeline: scroll(nearest block);
+  }
+}
+
+.viewer__close {
+  position: fixed;
+  top: 0.875rem;
+  right: 0.875rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, white 14%, transparent);
+  color: white;
+  transition:
+    background-color var(--duration-hover) var(--ease-out-soft),
+    transform var(--duration-hover) var(--ease-out-soft);
+}
+
+@media (hover: hover) {
+  .viewer__close:hover {
+    background: color-mix(in srgb, white 26%, transparent);
+    transform: rotate(90deg);
+  }
+}
+
+.viewer__frame {
+  position: relative;
+  width: min(100% - 1rem, 87.5rem);
+  margin: 4rem auto 2.5rem;
+  animation: viewer-in 550ms var(--ease-out-soft) both;
+}
+
+.viewer__sheet {
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--color-paper);
+  box-shadow: 0 2rem 4rem -1.5rem color-mix(in srgb, black 60%, transparent);
+}
+
+.viewer__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.75rem 1.5rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.viewer__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.viewer__meta dt {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.viewer__meta dd {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+/* Slides edge to edge, no gaps (seams are invisible: same paper background). */
+.viewer__slides img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.viewer__end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3.5rem 1.5rem 4rem;
+  border-top: 1px solid var(--color-line);
+  text-align: center;
+}
+
+.viewer__rail {
+  display: none;
+}
+
+@media (width >= 40rem) {
+  .viewer__frame {
+    width: min(100% - 3rem, 87.5rem);
+    margin-top: 4.5rem;
+  }
+
+  .viewer__sheet {
+    border-radius: 1.25rem;
+  }
+
+  .viewer__header {
+    padding: 2.25rem 2.5rem;
+  }
+}
+
+@media (width >= 96rem) {
+  .viewer__rail {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% + 1rem);
+  }
+
+  .viewer__rail-inner {
+    position: sticky;
+    top: 5.5rem;
+  }
+}
+
+@keyframes viewer-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 2rem, 0);
+  }
+}
+
+@keyframes viewer-progress {
+  to {
+    transform: scaleX(1);
+  }
+}

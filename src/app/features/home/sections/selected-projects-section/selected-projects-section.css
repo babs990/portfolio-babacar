@@ -1,0 +1,16 @@
+/* "See more →" text link: the arrow slides on hover. */
+.see-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.see-more-link__arrow {
+  transition: transform var(--duration-hover) var(--ease-out-soft);
+}
+
+@media (hover: hover) {
+  .see-more-link:hover .see-more-link__arrow {
+    transform: translate3d(4px, 0, 0);
+  }
+}

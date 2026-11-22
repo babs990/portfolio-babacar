@@ -1,0 +1,17 @@
+/*
+ * Background: the Figma texture is a ~9% white mandala layer. The asset is that
+ * layer flattened on black, so `screen` blending over the cream restores it exactly
+ * (cream + 9% white = #f6edd5 in the mock-up).
+ */
+.hero {
+  background-color: var(--color-background);
+  background-image: url('/assets/images/hero-pattern.webp');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: screen;
+}
+
+/* Soft burgundy shadow under the tilted frame (follows the image alpha). */
+.hero__portrait {
+  filter: drop-shadow(0 1.5rem 2.5rem color-mix(in srgb, var(--color-primary) 18%, transparent));
+}

@@ -1,0 +1,126 @@
+@if (viewer.project(); as project) {
+  @let study = project.caseStudy;
+  @let shareUrl = viewer.shareUrl(project);
+  @let title = project.titleKey | translate;
+  @let shareText = 'projects.viewer.shareText' | translate: { title: title };
+
+  <div
+    class="viewer"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="viewer-title"
+    (keydown.escape)="close()"
+  >
+    <div class="viewer__backdrop" aria-hidden="true"></div>
+
+    <div
+      #scroller
+      class="viewer__scroller"
+      tabindex="-1"
+      data-viewer-dismiss
+      (click)="onBackdropClick($event)"
+    >
+      <div class="viewer__progress" aria-hidden="true"></div>
+
+      <button
+        type="button"
+        class="viewer__close"
+        [attr.aria-label]="'projects.viewer.close' | translate"
+        (click)="close()"
+      >
+        <svg class="size-5" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path
+            d="m5 5 10 10M15 5 5 15"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+
+      <div class="viewer__frame" data-viewer-dismiss>
+        <article class="viewer__sheet">
+          <!-- Project header -->
+          <header class="viewer__header">
+            <div class="min-w-0">
+              <p class="text-xs font-medium tracking-wider text-muted uppercase">
+                {{ 'projects.viewer.label' | translate }}
+              </p>
+              <h2
+                id="viewer-title"
+                class="mt-1 text-[clamp(1.75rem,2.5vw,2.25rem)] leading-tight font-bold text-heading"
+              >
+                {{ title }}
+              </h2>
+              <p class="mt-1.5 text-sm text-ink">
+                {{ 'projects.viewer.by' | translate }}
+                <span class="font-semibold">{{ 'hero.name' | translate }}</span>
+              </p>
+              @if (study) {
+                <dl class="viewer__meta">
+                  <div>
+                    <dt>{{ 'projects.viewer.role' | translate }}</dt>
+                    <dd>{{ study.roleKey | translate }}</dd>
+                  </div>
+                  <div>
+                    <dt>{{ 'projects.viewer.field' | translate }}</dt>
+                    <dd>{{ study.fieldKey | translate }}</dd>
+                  </div>
+                  @if (project.year) {
+                    <div>
+                      <dt>{{ 'projects.viewer.year' | translate }}</dt>
+                      <dd>{{ project.year }}</dd>
+                    </div>
+                  }
+                </dl>
+              }
+            </div>
+            <app-share-menu [url]="shareUrl" [title]="title" [text]="shareText" />
+          </header>
+
+          <!-- Case study: slides stacked edge to edge -->
+          @if (study) {
+            <div class="viewer__slides">
+              @for (slide of study.slides; track slide.src; let i = $index) {
+                <img
+                  [ngSrc]="'assets/images/' + slide.src"
+                  [width]="slide.width"
+                  [height]="slide.height"
+                  [loading]="i < 2 ? 'eager' : 'lazy'"
+                  [alt]="slide.altKey | translate"
+                />
+              }
+            </div>
+          }
+
+          <!-- End of project -->
+          <footer class="viewer__end">
+            <p class="text-sm font-medium tracking-wider text-muted uppercase">{{ title }}</p>
+            <h3 class="text-[clamp(1.5rem,2.2vw,2rem)] leading-tight font-bold text-heading">
+              {{ 'projects.viewer.endTitle' | translate }}
+            </h3>
+            <p class="text-base text-ink">{{ 'projects.viewer.endText' | translate }}</p>
+            <div class="mt-2 flex flex-wrap items-center justify-center gap-3">
+              <app-share-menu placement="up" [url]="shareUrl" [title]="title" [text]="shareText" />
+              <a appButton routerLink="/contact">{{ 'projects.viewer.contact' | translate }}</a>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Desktop side rail (Behance-like) -->
+        <aside class="viewer__rail">
+          <div class="viewer__rail-inner">
+            <app-share-menu
+              variant="light"
+              placement="left"
+              [compact]="true"
+              [url]="shareUrl"
+              [title]="title"
+              [text]="shareText"
+            />
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+}

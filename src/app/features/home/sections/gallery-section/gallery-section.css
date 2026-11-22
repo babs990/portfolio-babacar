@@ -1,0 +1,47 @@
+/* Strip: native horizontal scroll, scrollbar hidden. */
+.gallery__track {
+  /* Width of a tilted photo (Figma ≈ 335px at 1440); straight ones scale from it. */
+  --gallery-card: clamp(14rem, 23.3vw, 21.5rem);
+
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Same visual scale for every photo: width ∝ its natural width. */
+.gallery__item {
+  width: calc(var(--gallery-card) * var(--photo-w, 1));
+}
+
+/* Dots: 24px hit area, 8px mark that stretches into a pill when active. */
+.gallery__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+  padding-inline: 0.25rem;
+}
+
+.gallery__dot-mark {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-pill);
+  background-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
+  transition:
+    width var(--duration-hover) var(--ease-out-soft),
+    background-color var(--duration-hover) var(--ease-out-soft);
+}
+
+.gallery__dot.is-active .gallery__dot-mark {
+  width: 1.5rem;
+  background-color: var(--color-primary);
+}
+
+@media (hover: hover) {
+  .gallery__dot:not(.is-active):hover .gallery__dot-mark {
+    background-color: color-mix(in srgb, var(--color-primary) 55%, transparent);
+  }
+}

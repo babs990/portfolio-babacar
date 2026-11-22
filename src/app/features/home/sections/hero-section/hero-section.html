@@ -1,0 +1,46 @@
+<section id="hero" class="hero overflow-x-clip mb-4" aria-labelledby="hero-title">
+  <div class="container-site grid-site items-start gap-y-10 pt-12 pb-16 lg:h-[37.5rem] lg:py-0">
+    <!-- Text -->
+    <div class="col-span-full animate-fade-in-up lg:col-span-7 lg:pt-[5.375rem]">
+      <p
+        class="inline-block -rotate-[4deg] rounded-pill bg-primary-soft px-4 py-0.5 text-base text-primary"
+      >
+        {{ 'hero.greeting' | translate }}
+      </p>
+
+      <h1
+        id="hero-title"
+        class="mt-3 text-[clamp(2.25rem,3.34vw,3rem)] leading-[1.25] font-bold text-wrap text-primary lg:leading-[1.6]"
+      >
+        {{ 'hero.name' | translate }}
+      </h1>
+
+      <p class="mt-6 max-w-[40rem] text-base leading-[1.6] text-ink lg:mt-[1.625rem]">
+        {{ 'hero.tagline' | translate }}
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-2.5 lg:mt-6">
+        <a appButton class="min-w-[12.875rem]" routerLink="/contact">{{
+          'common.contactMe' | translate
+        }}</a>
+        @for (link of socialLinks; track link.platform) {
+          <app-social-icon-button [link]="link" />
+        }
+      </div>
+    </div>
+
+    <!-- Portrait (frame, tilt and dashed outline are part of the image) -->
+    <div
+      class="col-span-full w-full max-w-[34rem] animate-fade-in justify-self-center lg:col-span-5 lg:w-[107%] lg:max-w-none lg:justify-self-start lg:pt-9"
+    >
+      <img
+        class="hero__portrait h-auto w-full"
+        ngSrc="assets/images/hero-portrait.webp"
+        width="1084"
+        height="1129"
+        priority
+        [alt]="'hero.photoAlt' | translate"
+      />
+    </div>
+  </div>
+</section>

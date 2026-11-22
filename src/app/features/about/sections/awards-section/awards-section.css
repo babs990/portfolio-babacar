@@ -1,0 +1,96 @@
+/*
+ * Expanding photo cards. Mobile: stacked, all open.
+ * Desktop (lg): one row; the active card grows (flex-grow 1.69, Figma ≈ 545 vs 323px)
+ * and reveals its text; the others shrink to the photo only.
+ */
+.awards {
+  --award-ratio: 1.69;
+  --award-gap: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  container-type: inline-size;
+}
+
+.award {
+  position: relative;
+  height: 20rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  isolation: isolate;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+
+.award__image {
+  object-fit: cover;
+  object-position: center 35%;
+  transition:
+    transform var(--duration-slow) var(--ease-out-soft),
+    filter var(--duration-slow) var(--ease-out-soft);
+}
+
+/* Burgundy fade at the bottom (keeps the white text readable). */
+.award__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-primary) 94%, transparent) 0%,
+    color-mix(in srgb, var(--color-primary) 70%, transparent) 40%,
+    transparent 78%
+  );
+}
+
+.award__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+}
+
+@media (width >= 64rem) {
+  .awards {
+    flex-direction: row;
+    gap: var(--award-gap);
+    height: 20.25rem;
+  }
+
+  .award {
+    flex: 1 1 0;
+    min-width: 0;
+    height: auto;
+    transition: flex-grow 700ms var(--ease-in-out-soft);
+  }
+
+  .award.is-active {
+    flex-grow: var(--award-ratio);
+  }
+
+  /* Fixed to the OPEN width so the text never reflows while the card grows. */
+  .award__content {
+    width: calc((100cqw - 2 * var(--award-gap)) * var(--award-ratio) / (var(--award-ratio) + 2));
+    opacity: 0;
+    transform: translate3d(0, 1rem, 0);
+    transition:
+      opacity var(--duration-base) var(--ease-out-soft),
+      transform var(--duration-base) var(--ease-out-soft);
+  }
+
+  .award.is-active .award__content {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition-duration: var(--duration-slow);
+    transition-delay: 250ms;
+  }
+
+  .award:not(.is-active) .award__image {
+    filter: saturate(0.85);
+  }
+
+  .award.is-active .award__image {
+    transform: scale(1.03);
+  }
+}

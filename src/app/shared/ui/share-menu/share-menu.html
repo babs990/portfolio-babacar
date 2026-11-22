@@ -1,0 +1,79 @@
+<button
+  type="button"
+  class="inline-flex items-center justify-center gap-2 rounded-pill text-sm font-semibold"
+  [class.btn-outline]="variant() === 'outline'"
+  [class.btn-light]="variant() === 'light'"
+  [class.size-11]="compact()"
+  [class.h-11]="!compact()"
+  [class.px-5]="!compact()"
+  aria-haspopup="menu"
+  [attr.aria-expanded]="open()"
+  [attr.aria-label]="compact() ? ('projects.viewer.shareLabel' | translate) : null"
+  (click)="toggle()"
+>
+  <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path
+      d="M8 10V2.5m0 0L5 5.5m3-3 3 3M3.5 8v4.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V8"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+  @if (!compact()) {
+    {{ 'projects.viewer.share' | translate }}
+  }
+</button>
+
+@if (open()) {
+  <ul class="share-menu" [class]="'share-menu--' + placement()" role="menu">
+    @if (canNativeShare) {
+      <li role="none">
+        <button type="button" class="share-menu__item" role="menuitem" (click)="nativeShare()">
+          {{ 'projects.viewer.shareNative' | translate }}
+        </button>
+      </li>
+    }
+    <li role="none">
+      <button type="button" class="share-menu__item" role="menuitem" (click)="copyLink()">
+        {{ 'projects.viewer.copyLink' | translate }}
+      </button>
+    </li>
+    <li role="none">
+      <a
+        class="share-menu__item"
+        role="menuitem"
+        target="_blank"
+        rel="noopener noreferrer"
+        [href]="linkedinUrl()"
+        (click)="open.set(false)"
+      >
+        {{ 'projects.viewer.shareLinkedin' | translate }}
+      </a>
+    </li>
+    <li role="none">
+      <a
+        class="share-menu__item"
+        role="menuitem"
+        target="_blank"
+        rel="noopener noreferrer"
+        [href]="whatsappUrl()"
+        (click)="open.set(false)"
+      >
+        {{ 'projects.viewer.shareWhatsapp' | translate }}
+      </a>
+    </li>
+    <li role="none">
+      <a class="share-menu__item" role="menuitem" [href]="mailUrl()" (click)="open.set(false)">
+        {{ 'projects.viewer.shareEmail' | translate }}
+      </a>
+    </li>
+  </ul>
+}
+
+<!-- Copy feedback (visible toast + screen readers) -->
+<span class="share-menu__toast" [class.is-visible]="copied()" role="status">
+  @if (copied()) {
+    {{ 'projects.viewer.linkCopied' | translate }}
+  }
+</span>

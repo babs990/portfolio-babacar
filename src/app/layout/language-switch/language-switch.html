@@ -1,0 +1,18 @@
+<div
+  role="group"
+  class="inline-flex h-8 rounded-pill border border-primary"
+  [attr.aria-label]="'common.languages.label' | translate"
+>
+  @for (language of i18n.languages; track language.code) {
+    @let active = i18n.lang() === language.code;
+    <button
+      type="button"
+      class="w-[2.6875rem] rounded-pill text-base leading-none text-ink transition-colors duration-200 hover:text-primary aria-pressed:bg-primary aria-pressed:text-primary-contrast aria-pressed:hover:text-primary-contrast"
+      [attr.lang]="language.code"
+      [attr.aria-pressed]="active"
+      (click)="i18n.setLang(language.code)"
+    >
+      {{ language.labelKey | translate }}
+    </button>
+  }
+</div>

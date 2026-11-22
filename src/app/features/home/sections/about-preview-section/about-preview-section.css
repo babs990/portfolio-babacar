@@ -1,0 +1,4 @@
+/* Very soft shadow under the framed portrait (follows the image alpha). */
+.about__portrait {
+  filter: drop-shadow(0 1rem 2rem color-mix(in srgb, var(--color-primary) 12%, transparent));
+}

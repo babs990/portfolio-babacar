@@ -1,0 +1,53 @@
+<section id="method" class="pt-16 pb-20 lg:pt-16 lg:pb-32" aria-labelledby="method-title">
+  <div class="container-site">
+    <h2
+      id="method-title"
+      class="text-center text-[clamp(1.75rem,2.78vw,2.5rem)] leading-tight font-bold text-ink"
+    >
+      {{ 'services.method.title' | translate }}
+    </h2>
+
+    <div class="pillars mt-10 lg:mt-[7.375rem]">
+      <!-- 01 · 02 -->
+      <ol class="pillars__side pillars__side--left">
+        @for (p of left; track p.id; let i = $index) {
+          <li class="pillar" [class]="'pillar--row' + (i + 1)">
+            <div class="pillar__head">
+              <h3 class="pillar__title">
+                {{ p.n }} – {{ 'services.method.items.' + p.id + '.title' | translate }}
+              </h3>
+              <span class="pillar__line" aria-hidden="true"></span>
+            </div>
+            <p class="pillar__text">{{ 'services.method.items.' + p.id + '.text' | translate }}</p>
+          </li>
+        }
+      </ol>
+
+      <!-- Portrait (dashed ring is part of the image) -->
+      <div class="pillars__circle">
+        <img
+          class="h-auto w-full"
+          ngSrc="assets/images/services-pillars-portrait.webp"
+          width="778"
+          height="778"
+          [alt]="'services.method.imageAlt' | translate"
+        />
+      </div>
+
+      <!-- 03 · 04 -->
+      <ol class="pillars__side pillars__side--right" start="3">
+        @for (p of right; track p.id; let i = $index) {
+          <li class="pillar" [class]="'pillar--row' + (i + 1)">
+            <div class="pillar__head">
+              <h3 class="pillar__title">
+                {{ p.n }} – {{ 'services.method.items.' + p.id + '.title' | translate }}
+              </h3>
+              <span class="pillar__line" aria-hidden="true"></span>
+            </div>
+            <p class="pillar__text">{{ 'services.method.items.' + p.id + '.text' | translate }}</p>
+          </li>
+        }
+      </ol>
+    </div>
+  </div>
+</section>

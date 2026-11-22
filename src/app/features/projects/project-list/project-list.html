@@ -1,0 +1,72 @@
+<!-- Header -->
+<section
+  id="projects-intro"
+  class="pt-16 pb-10 lg:pt-[6.25rem] lg:pb-14"
+  aria-labelledby="projects-title"
+>
+  <div class="container-site">
+    <div class="mx-auto flex max-w-[54rem] animate-fade-in-up flex-col items-center text-center">
+      <p class="-rotate-[4deg] rounded-pill bg-primary-soft px-4 py-0.5 text-base text-primary">
+        {{ 'projects.list.eyebrow' | translate }}
+      </p>
+      <h1
+        id="projects-title"
+        class="mt-4 text-[clamp(2rem,3.34vw,3rem)] leading-tight font-bold text-heading"
+      >
+        {{ 'projects.list.title' | translate }}
+      </h1>
+      <p class="mt-5 text-base leading-[1.75] text-ink sm:text-lg">
+        {{ 'projects.list.intro' | translate }}
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Filters + grid -->
+<section id="projects" class="pb-20 lg:pb-28" aria-labelledby="projects-title">
+  <div class="container-site">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div
+        class="flex flex-wrap gap-2"
+        role="group"
+        [attr.aria-label]="'projects.list.filterLabel' | translate"
+      >
+        <button
+          type="button"
+          class="chip"
+          [attr.aria-pressed]="filter() === null"
+          (click)="select(null)"
+        >
+          {{ 'projects.list.all' | translate }}
+        </button>
+        @for (tag of tags; track tag) {
+          <button
+            type="button"
+            class="chip"
+            [attr.aria-pressed]="filter() === tag"
+            (click)="select(tag)"
+          >
+            {{ tag | translate }}
+          </button>
+        }
+      </div>
+
+      <p class="text-sm text-muted" aria-live="polite">
+        {{ countKey() | translate: { n: visible().length } }}
+      </p>
+    </div>
+
+    <ul class="mt-8 grid gap-x-7 gap-y-[1.875rem] lg:mt-10 lg:grid-cols-2">
+      @for (project of visible(); track project.slug) {
+        <li class="animate-fade-in"><app-project-card [project]="project" /></li>
+      } @empty {
+        <li class="py-12 text-center text-base text-muted lg:col-span-2">
+          {{ 'projects.list.empty' | translate }}
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- Same contact section as the other pages -->
+<app-contact-cta-section />

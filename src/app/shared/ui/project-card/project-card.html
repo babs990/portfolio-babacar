@@ -1,0 +1,37 @@
+@let p = project();
+<!-- Whole card is the link; the round arrow is decorative. -->
+<a
+  class="project-card group flex h-full flex-col gap-5 rounded-[2rem] border border-line p-5 sm:flex-row sm:items-center sm:gap-7"
+  [href]="href()"
+  (click)="onClick($event)"
+>
+  <img
+    class="h-auto w-full shrink-0 sm:w-[14.8125rem]"
+    [ngSrc]="'assets/images/' + p.cover"
+    width="237"
+    height="147"
+    [alt]="p.coverAltKey | translate"
+  />
+
+  <div class="flex min-w-0 flex-1 items-center gap-4">
+    <div class="flex max-w-[14rem] flex-1 flex-col sm:items-center">
+      <h3 class="text-2xl leading-tight font-bold text-ink">{{ p.titleKey | translate }}</h3>
+      <p class="mt-3 text-sm leading-5 text-ink">{{ p.summaryKey | translate }}</p>
+    </div>
+
+    <span
+      class="project-card__arrow btn-primary ml-auto inline-flex size-10 shrink-0 items-center justify-center rounded-pill"
+      aria-hidden="true"
+    >
+      <svg class="size-4" viewBox="0 0 16 16" fill="none">
+        <path
+          d="M4.5 11.5 11.5 4.5m0 0H6m5.5 0V10"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+  </div>
+</a>

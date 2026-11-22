@@ -1,0 +1,57 @@
+/*
+ * Keyframes and animation tokens.
+ * Declared in @theme so Tailwind generates `animate-marquee`, `animate-fade-in-up`, ...
+ */
+@theme {
+  --animate-marquee: marquee var(--duration-marquee) linear infinite;
+  --animate-fade-in: fade-in var(--duration-slow) var(--ease-out-soft) both;
+  --animate-fade-in-up: fade-in-up var(--duration-slow) var(--ease-out-soft) both;
+
+  /* Infinite horizontal scroll: the track must contain its content twice. */
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 1.5rem, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+/*
+ * Scroll reveal for page sections (driven by core/services/scroll-reveal.ts).
+ * Fast & smooth: 550ms fade + 24px rise, opacity/transform only (GPU-composited).
+ * `.reveal` is only ever set on sections that are BELOW the fold when found.
+ */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 1.5rem, 0);
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 550ms var(--ease-out-soft),
+    transform 550ms var(--ease-out-soft);
+}

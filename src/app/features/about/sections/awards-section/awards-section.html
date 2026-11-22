@@ -1,0 +1,45 @@
+<section id="awards" class="pb-16 lg:pb-24" aria-labelledby="awards-title">
+  <div class="container-site">
+    <h2
+      id="awards-title"
+      class="text-[clamp(1.75rem,2.78vw,2.5rem)] leading-tight font-bold text-heading"
+    >
+      {{ 'about.awards.title' | translate }}
+    </h2>
+
+    <ul class="awards mt-10 lg:mt-14">
+      @for (award of cards(); track $index; let i = $index) {
+        <li
+          class="award"
+          tabindex="0"
+          data-cursor="hover"
+          [class.is-active]="i === active()"
+          (mouseenter)="open(i)"
+          (focusin)="open(i)"
+          (click)="open(i)"
+        >
+          <img
+            class="award__image"
+            fill
+            [ngSrc]="'assets/images/' + award.image.src"
+            [alt]="award.image.altKey | translate"
+          />
+          <div class="award__shade" aria-hidden="true"></div>
+
+          <div class="award__content">
+            <p class="text-xs font-medium text-white/80">
+              {{ award.issuerKey | translate }} ·
+              <time [attr.datetime]="award.date">{{ award.when }}</time>
+            </p>
+            <h3 class="mt-1.5 text-xl leading-snug font-bold text-white lg:text-[1.375rem]">
+              {{ award.titleKey | translate }}
+            </h3>
+            <p class="mt-2 text-sm leading-[1.6] text-white/90">
+              {{ award.descriptionKey | translate }}
+            </p>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

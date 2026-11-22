@@ -1,0 +1,80 @@
+<section
+  id="services-preview"
+  class="services-preview py-16 text-white lg:pt-16 lg:pb-[4.5rem]"
+  aria-labelledby="services-preview-title"
+>
+  <div class="container-site">
+    <h2
+      id="services-preview-title"
+      class="text-center text-[clamp(1.75rem,2.78vw,2.5rem)] leading-tight font-bold"
+    >
+      {{ 'home.servicesPreview.title' | translate }}
+    </h2>
+
+    <p class="mx-auto mt-5 max-w-[55.625rem] text-base leading-[1.65]">
+      {{ 'home.servicesPreview.intro' | translate }}
+    </p>
+
+    <ul
+      class="mx-auto mt-12 grid max-w-[66.375rem] gap-[1.875rem] sm:grid-cols-2 lg:mt-[4.375rem] lg:grid-cols-4"
+    >
+      @for (service of services; track service.id) {
+        <li class="service-card flex flex-col rounded-[0.625rem] px-5 pt-4 pb-5">
+          <svg
+            class="mx-auto size-8"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            @switch (service.icon) {
+              @case ('mobile') {
+                <rect x="7" y="2.5" width="10" height="19" rx="2" />
+                <path d="M11.5 18.5h1" />
+              }
+              @case ('web') {
+                <rect x="2.5" y="4" width="19" height="13" rx="2" />
+                <path d="M2.5 8h19M8 21h8M12 17v4" />
+              }
+              @case ('research') {
+                <circle cx="12" cy="8" r="3.5" />
+                <path d="M5 20.5c1-3.5 3.8-5.5 7-5.5s6 2 7 5.5" />
+              }
+              @case ('prototype') {
+                <path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z" />
+                <path d="m3 12 9 4.5 9-4.5M3 16.5 12 21l9-4.5" />
+              }
+            }
+          </svg>
+
+          <h3 class="mt-6 text-base leading-snug font-semibold">
+            {{ service.titleKey | translate }}
+          </h3>
+          <p class="mt-4 text-sm leading-normal text-white/90">
+            {{ service.descriptionKey | translate }}
+          </p>
+        </li>
+      }
+    </ul>
+
+    @if (showMore()) {
+      <div class="mt-12 flex justify-center lg:mt-16">
+        <a appButton variant="light" routerLink="/services">
+          {{ 'common.seeMore' | translate }}
+          <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path
+              d="M3 8h10m0 0L9 4m4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+    }
+  </div>
+</section>

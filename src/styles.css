@@ -1,0 +1,16 @@
+/*
+ * Global stylesheet entry point.
+ * Order matters: fonts, Tailwind (theme + preflight + utilities), then project layers.
+ */
+@import '@fontsource/outfit/300.css';
+@import '@fontsource/outfit/400.css';
+@import '@fontsource/outfit/500.css';
+@import '@fontsource/outfit/600.css';
+@import '@fontsource/outfit/700.css';
+
+@import 'tailwindcss';
+
+@import './styles/tokens.css';
+@import './styles/base.css';
+@import './styles/utilities.css';
+@import './styles/animations.css';

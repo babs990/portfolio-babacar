@@ -1,0 +1,32 @@
+<footer class="border-t-2 border-line">
+  <div
+    class="container-site flex flex-col items-center gap-5 py-8 sm:flex-row sm:justify-between sm:gap-6"
+  >
+    <div class="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+      <a routerLink="/" class="shrink-0" [attr.aria-label]="'footer.homeLink' | translate">
+        <app-logo />
+      </a>
+
+      <nav [attr.aria-label]="'footer.label' | translate">
+        <ul class="flex items-center gap-8">
+          @for (link of links; track link.path) {
+            <li>
+              <a
+                class="text-sm text-ink transition-colors duration-200 hover:text-primary"
+                routerLinkActive="text-primary"
+                ariaCurrentWhenActive="page"
+                [routerLink]="link.path"
+              >
+                {{ link.labelKey | translate }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <p class="text-sm font-medium text-faint">
+      {{ 'footer.copyright' | translate: { year: year, name: ('hero.name' | translate) } }}
+    </p>
+  </div>
+</footer>

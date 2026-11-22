@@ -1,0 +1,203 @@
+<header class="sticky top-0 z-40 border-b border-line bg-background">
+  <div class="container-site flex h-header items-center">
+    <a routerLink="/" class="shrink-0" [attr.aria-label]="'common.homeLink' | translate">
+      <app-logo />
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="ml-20 hidden lg:block" [attr.aria-label]="'nav.label' | translate">
+      <ul class="flex items-center gap-6">
+        @for (item of navItems; track item.path) {
+          @if (item.children) {
+            <!-- Projects: dropdown listing every project + "All projects" -->
+            <li class="relative" routerLinkActive #rla="routerLinkActive">
+              <button
+                type="button"
+                class="nav-link inline-flex items-center gap-2 text-base"
+                [class.is-active]="rla.isActive"
+                [attr.aria-expanded]="openSubmenu() === item.path"
+                [attr.aria-controls]="'submenu-' + $index"
+                (click)="toggleSubmenu(item.path)"
+              >
+                {{ item.labelKey | translate }}
+                <svg
+                  class="size-3 transition-transform duration-200"
+                  [class.rotate-180]="openSubmenu() === item.path"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2.5 4.5 6 8l3.5-3.5"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <ul
+                [id]="'submenu-' + $index"
+                class="absolute top-full left-0 mt-4 min-w-60 rounded-card border border-line bg-surface p-2 shadow-lg shadow-primary/10"
+                [class.hidden]="openSubmenu() !== item.path"
+              >
+                @for (child of item.children; track child.path) {
+                  <li>
+                    <a
+                      [routerLink]="child.path"
+                      routerLinkActive="text-primary"
+                      class="block rounded-pill px-4 py-2 text-base text-ink transition-colors hover:bg-background hover:text-primary"
+                    >
+                      {{ child.labelKey | translate }}
+                    </a>
+                  </li>
+                }
+                <li
+                  class="border-line"
+                  [class.mt-1]="item.children.length"
+                  [class.pt-1]="item.children.length"
+                  [class.border-t]="item.children.length"
+                >
+                  <a
+                    [routerLink]="item.path"
+                    class="block rounded-pill px-4 py-2 text-base font-medium text-primary transition-colors hover:bg-background"
+                  >
+                    {{ 'nav.allProjects' | translate }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          } @else {
+            <li>
+              <a
+                class="nav-link text-base"
+                [routerLink]="item.path"
+                routerLinkActive="is-active"
+                ariaCurrentWhenActive="page"
+                [routerLinkActiveOptions]="{ exact: !!item.exact }"
+              >
+                {{ item.labelKey | translate }}
+              </a>
+            </li>
+          }
+        }
+      </ul>
+    </nav>
+
+    <!-- Desktop tools: search | language -->
+    <div class="ml-auto hidden items-center gap-4 lg:flex">
+      <button
+        type="button"
+        class="inline-flex items-center gap-2.5 text-base text-ink transition-colors hover:text-primary"
+        aria-haspopup="dialog"
+        aria-keyshortcuts="Control+K Meta+K"
+        (click)="openSearch()"
+      >
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="7.25" stroke="currentColor" stroke-width="1.75" />
+          <path
+            d="m16.5 16.5 4 4"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+          />
+        </svg>
+        {{ 'nav.search' | translate }}
+      </button>
+      <span class="h-4 w-0.5 bg-ink" aria-hidden="true"></span>
+      <app-language-switch />
+    </div>
+
+    <!-- Mobile: burger -->
+    <button
+      type="button"
+      class="-mr-2 ml-auto inline-flex size-10 items-center justify-center rounded-pill text-ink lg:hidden"
+      aria-controls="mobile-menu"
+      [attr.aria-expanded]="menuOpen()"
+      [attr.aria-label]="(menuOpen() ? 'common.closeMenu' : 'common.openMenu') | translate"
+      (click)="toggleMenu()"
+    >
+      <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        @if (menuOpen()) {
+          <path
+            d="M6 6l12 12M18 6 6 18"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+          />
+        } @else {
+          <path
+            d="M4 7h16M4 12h16M4 17h16"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+          />
+        }
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  @if (menuOpen()) {
+    <div
+      id="mobile-menu"
+      class="absolute inset-x-0 top-full max-h-[calc(100dvh-var(--spacing-header))] overflow-y-auto border-b border-line bg-background shadow-lg shadow-primary/10 lg:hidden"
+    >
+      <nav class="container-site py-6" [attr.aria-label]="'nav.label' | translate">
+        <ul class="flex flex-col gap-1">
+          @for (item of navItems; track item.path) {
+            <li>
+              <a
+                class="nav-link block py-2 text-lg"
+                [routerLink]="item.path"
+                routerLinkActive="is-active"
+                ariaCurrentWhenActive="page"
+                [routerLinkActiveOptions]="{ exact: !!item.exact }"
+              >
+                {{ item.labelKey | translate }}
+              </a>
+              @if (item.children?.length) {
+                <ul class="mb-2 ml-1 flex flex-col border-l border-line pl-4">
+                  @for (child of item.children; track child.path) {
+                    <li>
+                      <a
+                        [routerLink]="child.path"
+                        routerLinkActive="text-primary"
+                        class="block py-1.5 text-base text-ink"
+                      >
+                        {{ child.labelKey | translate }}
+                      </a>
+                    </li>
+                  }
+                </ul>
+              }
+            </li>
+          }
+        </ul>
+
+        <div class="mt-6 flex items-center justify-between border-t border-line pt-6">
+          <button
+            type="button"
+            class="inline-flex items-center gap-2.5 text-base text-ink"
+            aria-haspopup="dialog"
+            aria-keyshortcuts="Control+K Meta+K"
+            (click)="openSearch()"
+          >
+            <svg class="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7.25" stroke="currentColor" stroke-width="1.75" />
+              <path
+                d="m16.5 16.5 4 4"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+              />
+            </svg>
+            {{ 'nav.search' | translate }}
+          </button>
+          <app-language-switch />
+        </div>
+      </nav>
+    </div>
+  }
+</header>

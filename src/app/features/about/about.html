@@ -1,0 +1,39 @@
+<section id="about-intro" class="pt-16 pb-4 lg:pt-[6.25rem] lg:pb-10" aria-labelledby="about-title">
+  <div class="container-site">
+    <div class="mx-auto flex max-w-[54rem] animate-fade-in-up flex-col">
+      <h1
+        id="about-title"
+        class="text-[clamp(2rem,3.34vw,3rem)] leading-tight font-bold text-heading"
+      >
+        {{ 'hero.name' | translate }}
+      </h1>
+
+      <p class="mt-6 text-base leading-[1.75] text-ink sm:text-lg lg:mt-7">
+        {{ 'about.intro' | translate }}
+      </p>
+
+      <a
+        appButton
+        class="mt-6 self-center"
+        [attr.href]="cvUrl || null"
+        [attr.target]="cvUrl ? '_blank' : null"
+        [attr.rel]="cvUrl ? 'noopener' : null"
+        [attr.aria-label]="'about.cvLabel' | translate"
+      >
+        {{ 'about.cv' | translate }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Same photo strip as the home page (autoplay every 10s + pagination). -->
+<app-gallery-section />
+
+<!-- Experience timeline (from the CV) -->
+<app-experience-section />
+
+<!-- Awards & events (expanding cards) -->
+<app-awards-section />
+
+<!-- Same contact section as the home page (form + WhatsApp + socials) -->
+<app-contact-cta-section />

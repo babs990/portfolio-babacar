@@ -1,0 +1,12 @@
+<div class="marquee__track">
+  @for (copy of copies; track copy) {
+    <ul class="marquee__group" [attr.aria-hidden]="copy > 0 ? 'true' : null">
+      @for (key of items(); track key) {
+        <li class="marquee__item">
+          <span class="marquee__diamond" aria-hidden="true"></span>
+          {{ key | translate }}
+        </li>
+      }
+    </ul>
+  }
+</div>

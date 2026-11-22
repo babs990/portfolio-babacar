@@ -1,0 +1,38 @@
+<section id="experience" class="py-16 lg:py-24" aria-labelledby="experience-title">
+  <div class="container-site">
+    <h2
+      id="experience-title"
+      class="text-[clamp(1.75rem,2.78vw,2.5rem)] leading-tight font-bold text-heading"
+    >
+      {{ 'about.experience.title' | translate }}
+    </h2>
+
+    <!-- Vertical branch: oldest at the top, current role at the bottom -->
+    <ol class="xp-track mx-auto mt-10 max-w-[56rem] lg:mt-14">
+      @for (xp of items(); track xp.id; let i = $index) {
+        <li class="xp" [class.xp--left]="i % 2 === 0" [class.xp--last]="$last" [style.--i]="i">
+          <div class="xp__rail" aria-hidden="true">
+            <span class="xp__node" [class.is-current]="xp.current"></span>
+          </div>
+
+          <article class="xp__card">
+            <p class="xp__meta flex flex-wrap items-center gap-2 text-xs font-medium text-muted">
+              <time [attr.datetime]="xp.start">{{ xp.period }}</time>
+              @if (xp.current) {
+                <span
+                  class="rounded-pill bg-primary px-2 py-0.5 text-[0.6875rem] text-primary-contrast"
+                >
+                  {{ 'about.experience.current' | translate }}
+                </span>
+              }
+            </p>
+            <h3 class="mt-2 text-lg leading-snug font-semibold text-heading">
+              {{ xp.roleKey | translate }}
+            </h3>
+            <p class="text-sm font-medium text-primary">{{ xp.companyKey | translate }}</p>
+          </article>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

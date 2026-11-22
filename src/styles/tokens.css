@@ -1,0 +1,91 @@
+/*
+ * Design tokens. The ONLY place where raw color values are allowed.
+ *
+ * Variables declared in `@theme` are emitted as CSS custom properties on :root
+ * AND generate Tailwind utilities (e.g. --color-primary -> bg-primary, text-primary).
+ * `static` = always emitted, even if no utility uses them (components read them via var()).
+ * Variables in the plain :root block are CSS-only (no Tailwind utility).
+ *
+ * Values sampled from the mock-ups (Figma frame 1440px).
+ */
+
+@theme static {
+  /* Colors (semantic) */
+  --color-primary: #7f011f; /* headings, name, accents */
+  --color-primary-contrast: #ffe5e5; /* text/icons on top of primary (pale pink) */
+  --color-primary-hover: color-mix(
+    in oklab,
+    var(--color-primary) 86%,
+    white
+  ); /* lighter burgundy for hovered fills (derived, not a 2nd shade) */
+  --color-primary-soft: #e2aca0; /* soft tint: greeting pill */
+  --color-primary-bright: #c9103c; /* crimson end of the services gradient (primary → bright). Gradient only */
+  --color-background: #f5ebd0; /* page background (cream) */
+  --color-paper: #fffdf9; /* case-study sheet (project viewer), matches the slides background */
+  --color-surface: #fbf5e6; /* cards, menus, raised areas. Not in the mock-up yet */
+  --color-ink: #000000; /* main text (nav, paragraphs) */
+  --color-faint: #989281; /* faint grey-beige: footer copyright */
+  --color-heading: #2b2f38; /* dark slate of section headings on cream (about name) */
+  --color-muted: #6e5d58; /* secondary text. Not in the mock-up yet */
+  --color-line: color-mix(
+    in srgb,
+    var(--color-primary) 19%,
+    transparent
+  ); /* hairlines: header border (#dfbfae on cream) */
+  --color-logo-ink: #1b3626; /* dark green of the "bn" in the logo. Logo only */
+
+  /* Typography */
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+
+  /* Radii */
+  --radius-pill: 9999px; /* buttons, chips: fully rounded */
+  --radius-card: 1.5rem; /* cards, framed media */
+
+  /* Spacing (extra semantic steps on top of Tailwind's --spacing scale) */
+  --spacing-header: 5rem; /* header bar height (sticky): h-header, scroll offset */
+  --spacing-gutter: clamp(
+    1rem,
+    6.95vw,
+    6.25rem
+  ); /* page side margin: 100px at 1440, 16px on phones */
+  --spacing-section: 5rem; /* vertical section rhythm, mobile */
+  --spacing-section-lg: 8rem; /* vertical section rhythm, desktop */
+
+  /* Easings */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+:root {
+  /* Layout grid (Figma: 12 columns, invisible). */
+  --container-max: 77.5rem; /* content width (1240px = 1440 - 2 x 100) */
+  --grid-columns: 4;
+  --grid-gutter: clamp(1rem, 1.4vw, 1.25rem); /* ~20px at 1440, 16px below */
+
+  /* Durations */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --duration-hover: 400ms; /* button hover / press transitions */
+  --duration-marquee: 40s; /* one full loop of the skills band */
+
+  /* Custom cursor */
+  --cursor-ring-size: 2.5rem;
+  --cursor-dot-size: 0.5rem;
+  --cursor-ring-border: 1.5px;
+  --cursor-hover-scale: 1.6;
+  --cursor-press-scale: 0.85;
+  --cursor-lag: 0.15; /* lerp factor of the dot, 0..1 (lower = more lag) */
+}
+
+@media (width >= 48rem) {
+  :root {
+    --grid-columns: 8;
+  }
+}
+
+@media (width >= 64rem) {
+  :root {
+    --grid-columns: 12;
+  }
+}

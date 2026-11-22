@@ -1,0 +1,33 @@
+/*
+ * Hairline border on cream. Smooth hover (same timing as buttons):
+ * slight lift, light surface wash, stronger border, arrow nudged up-right.
+ */
+.project-card {
+  transition:
+    background-color var(--duration-hover) var(--ease-out-soft),
+    border-color var(--duration-hover) var(--ease-out-soft),
+    transform var(--duration-hover) var(--ease-out-soft),
+    box-shadow var(--duration-hover) var(--ease-out-soft);
+}
+
+.project-card__arrow svg {
+  transition: transform var(--duration-hover) var(--ease-out-soft);
+}
+
+@media (hover: hover) {
+  .project-card:hover {
+    background-color: color-mix(in srgb, var(--color-surface) 70%, transparent);
+    border-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
+    box-shadow: 0 1.25rem 2.5rem -1.5rem color-mix(in srgb, var(--color-primary) 30%, transparent);
+    transform: translate3d(0, -4px, 0);
+  }
+
+  /* Card hover also lights up the round arrow (btn-primary hover look). */
+  .project-card:hover .project-card__arrow {
+    background-color: var(--color-primary-hover);
+  }
+
+  .project-card:hover .project-card__arrow svg {
+    transform: translate3d(2px, -2px, 0);
+  }
+}

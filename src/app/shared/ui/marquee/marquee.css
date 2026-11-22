@@ -1,0 +1,58 @@
+:host {
+  --marquee-gap: 4rem;
+
+  display: block;
+  overflow: hidden;
+  /* Isolate layout/paint of the band from the rest of the page. */
+  contain: content;
+}
+
+@media (width >= 64rem) {
+  :host {
+    --marquee-gap: 8rem; /* Figma: ~128px between two skills */
+  }
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: var(--animate-marquee);
+  /* Own compositor layer: the animation never touches layout or paint. */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+:host(.is-paused) .marquee__track {
+  animation-play-state: paused;
+}
+
+/* Each copy ends with a gap, so the seam between copies equals the item gap. */
+.marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--marquee-gap);
+  padding-inline-end: var(--marquee-gap);
+}
+
+.marquee__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6875rem;
+  white-space: nowrap;
+}
+
+/* Small filled diamond (Figma: ~9px bounding box). */
+.marquee__diamond {
+  flex-shrink: 0;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: currentColor;
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}

@@ -1,0 +1,35 @@
+<section
+  id="selected-projects"
+  class="pt-16 pb-20 lg:pt-[5.5rem] lg:pb-24"
+  aria-labelledby="selected-projects-title"
+>
+  <div class="container-site">
+    <div class="flex items-center justify-between gap-6">
+      <h2
+        id="selected-projects-title"
+        class="text-[clamp(1.75rem,2.78vw,2.5rem)] leading-tight font-bold text-heading"
+      >
+        {{ 'home.selectedProjects.title' | translate }}
+      </h2>
+
+      <a routerLink="/projects" class="see-more-link shrink-0 text-base text-primary">
+        {{ 'common.seeMore' | translate }}
+        <svg class="see-more-link__arrow size-5" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path
+            d="M3 10h14m0 0-4.5-4.5M17 10l-4.5 4.5"
+            stroke="currentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+
+    <ul class="mt-10 grid gap-x-7 gap-y-[1.875rem] lg:mt-16 lg:grid-cols-2">
+      @for (project of projects; track $index) {
+        <li><app-project-card [project]="project" /></li>
+      }
+    </ul>
+  </div>
+</section>
