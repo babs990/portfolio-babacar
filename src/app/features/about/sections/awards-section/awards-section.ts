@@ -10,7 +10,7 @@ import { I18n } from '@core/services/i18n';
 const SLOTS = 3;
 
 interface AwardCard extends Award {
-  /** Localized "Month YYYY". */
+  /** Localized "Month YYYY" (empty when the date is unknown). */
   readonly when: string;
 }
 
@@ -33,7 +33,7 @@ export class AwardsSection {
 
   /**
    * TEMPORARY: while fewer than 3 awards exist, they are repeated to fill the row
-   * (only the EDACY valedictorian award today). Real awards take the slots once added.
+   * (none today: EDACY, Google UX certificate and Docsen hackathon fill the row). Real awards take the slots once added.
    */
   protected readonly cards = computed<readonly AwardCard[]>(() => {
     const format = new Intl.DateTimeFormat(this.i18n.lang() === 'fr' ? 'fr-FR' : 'en-GB', {
@@ -41,6 +41,7 @@ export class AwardsSection {
       year: 'numeric',
     });
     return fillSlots(AWARDS, SLOTS).map((award) => {
+      if (!award.date) return { ...award, when: '' };
       const when = format.format(new Date(`${award.date}-01T00:00:00`));
       return { ...award, when: when.charAt(0).toLocaleUpperCase() + when.slice(1) };
     });

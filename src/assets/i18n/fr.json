@@ -29,7 +29,7 @@
   "hero": {
     "greeting": "Salut, moi c'est",
     "name": "Serigne Khalifa Ababacar Sy Nguirane",
-    "tagline": "Passionné par la création d’interfaces web et mobiles intuitives et modernes, j’accompagne les entreprises dans la création de solutions numériques à fort impact en m’appuyant sur une approche rigoureuse de la conception centrée utilisateur.",
+    "tagline": "Je ne conçois pas seulement des écrans : je conçois des produits que les gens comprennent et utilisent vraiment. J’aide les entreprises à transformer un besoin en solution numérique à fort impact, grâce à une démarche rigoureuse centrée sur l’utilisateur.",
     "photoAlt": "Serigne Khalifa Ababacar Sy Nguirane souriant, un ordinateur portable et une tasse de café à la main, entouré des mots UX design, business goal, user research et product"
   },
   "skills": {
@@ -74,7 +74,7 @@
     }
   },
   "about": {
-    "intro": "Je suis Product UX/UI designer. J’aide les entreprises à concevoir des technologies modernes et centrées sur l’utilisateur. Grâce à mes compétences en analyse et en stratégie, j’ai eu l’opportunité de contribuer à des projets d’envergure, notamment la plateforme de l’Assemblée nationale.",
+    "intro": "Je suis Product UX/UI Designer. J’aide les entreprises à concevoir des produits numériques modernes, clairs et centrés sur l’utilisateur. Grâce à mes compétences en analyse et en stratégie, j’ai eu l’opportunité de contribuer à des projets d’envergure, dans des secteurs et des contextes variés.",
     "cv": "Mon CV",
     "cvLabel": "Mon CV (PDF, s’ouvre dans un nouvel onglet)",
     "experience": {
@@ -108,6 +108,18 @@
           "issuer": "EDACY · Talent 4 Startups",
           "description": "Major de la cohorte 3 du programme Product Design (UX/UI), distinction remise à Dakar pour « Discipline, Rigueur et Excellence ».",
           "imageAlt": "Trophée en verre EDACY « Cohorte 3 – Major du programme Product Design (UX/UI) » au nom de Serigne Khalifa A S Nguirane, Dakar, octobre 2025"
+        },
+        "googleUx": {
+          "title": "Certificat professionnel Google UX Design",
+          "issuer": "Google · Coursera",
+          "description": "Parcours de sept cours conçus par Google, couvrant tout le processus de conception : empathie avec les utilisateurs, définition des problèmes, idéation, wireframes, prototypes, maquettes haute fidélité sur Figma et tests pour recueillir des retours.",
+          "imageAlt": "Portrait en noir et blanc de Serigne Khalifa Ababacar Sy Nguirane, lunettes et polo, devant un mur clair"
+        },
+        "docsenHackathon": {
+          "title": "Participant au premier hackathon e-santé du Sénégal",
+          "issuer": "Docsen · Hackathon e-santé",
+          "description": "Avec l’équipe KAHFI, présentation de OneHealthID, une solution visant à doter chaque citoyen d’une identité de santé unique, et échanges avec des professionnels du secteur pour mieux comprendre les défis de l’e-santé.",
+          "imageAlt": "Serigne Khalifa Ababacar Sy Nguirane, micro en main, présente OneHealthID avec une coéquipière de KAHFI, tous deux en t-shirt rouge OneHealthID, devant la banderole des partenaires"
         }
       }
     }
@@ -117,7 +129,7 @@
       "eyebrow": "Mon processus",
       "titleLine1": "Je ne commence pas par dessiner.",
       "titleLine2": "Je commence par comprendre.",
-      "text": "Applications mobiles, plateformes web et back-offices pour entrepreneurs, entreprises et institutions d’Afrique de l’Ouest : conçus à partir des personnes qui les utiliseront.",
+      "text": "Je conçois des produits numériques, applications, plateformes et outils de gestion, pour les entrepreneurs, les entreprises et les institutions, en partant de ceux qui les utiliseront.",
       "cta": "Mon processus",
       "imageAlt": "Parcours utilisateur de l’application Samba : de l’ouverture à l’accueil, puis carte, recherche, IA Samba (chat ou vocal), consultation d’une destination et mode guide"
     },
@@ -198,6 +210,74 @@
           "s17": "Prototype – discussion vocale : parler à Samba et recevoir une réponse vocale avec des suggestions",
           "s18": "Prototype – carte et lieux : carte interactive des sites touristiques et page détaillée du Lac Rose",
           "s19": "Merci : écrans de démarrage, de bienvenue et de connexion de l’application Samba"
+        }
+      },
+      "sengame": {
+        "title": "SenGame",
+        "summary": "Une application mobile pour acheter du matériel gaming au Sénégal",
+        "coverAlt": "Trois écrans de l’application mobile SenGame : panier, catalogue et page d’accueil",
+        "role": "UX Designer",
+        "field": "E-commerce · Gaming",
+        "slides": {
+          "s1": "Couverture : SenGame, application de vente de matériel gaming, illustrée par un robot portant un casque de réalité virtuelle",
+          "s2": "Trois écrans de SenGame : panier, catalogue et page d’accueil « Découvrez les meilleurs produits de e-gaming au Sénégal »",
+          "s3": "Aperçu du projet : application mobile pour les passionnés de jeux vidéo, projet d’un mois et demi, problème « comment acheter des produits gaming en ligne ? », rôle d’UX designer",
+          "s4": "Recherche utilisateur : recherche secondaire basée sur les données collectées par Game Hub Senegal",
+          "s5": "Points de douleur : au Sénégal, 60 % des joueurs ne dépensent pas d’argent dans le jeu, la plupart n’ont pas de carte bancaire, et une navigation difficile pousse à abandonner",
+          "s6": "Persona Matar, 22 ans, étudiant à Dakar, passionné de jeux vidéo : veut acheter du matériel gaming, sceptique face aux achats en ligne",
+          "s7": "Persona Sokhna, 38 ans, entrepreneuse et mère de deux enfants : veut acheter des jeux pour ses enfants, connaît peu les jeux vidéo et le e-commerce",
+          "s8": "Parcours utilisateur de Matar : choisir un produit, voir le panier, valider l’achat et suivre la commande, avec tâches, émotions et améliorations",
+          "s9": "Parcours utilisateur de Sokhna : les mêmes quatre étapes, avec des suggestions pour guider son choix",
+          "s10": "Storyboard dessiné à la main : Matar s’ennuie chez lui, télécharge SenGame, choisit du matériel, attend la livraison et est content de jouer",
+          "s11": "Flux utilisateur pour acheter du matériel : accueil, catalogue ou recherche, produit, panier, validation, paiement",
+          "s12": "Architecture de l’information : accueil, compte, catalogue, panier et autres rubriques avec leurs sous-pages",
+          "s13": "Wireframes papier des pages accueil, catalogue et panier",
+          "s14": "Wireframes numériques des pages accueil, catalogue et panier réalisés sur Figma",
+          "s15": "Maquettes des pages accueil, catalogue et panier",
+          "s16": "Maquette du catalogue : barre de recherche, filtres (nouveautés, populaire, promo), dernières collections et catégories",
+          "s17": "Maquette du panier : cartes produits avec quantité, total et bouton « Valider l’achat »",
+          "s18": "Maquette du détail produit : PlayStation 5 avec carrousel de photos, note, description et bouton « Acheter maintenant »",
+          "s19": "Écran de démarrage, onboarding « Le marché des jeux vidéo, simple et sécurisé » et écran de connexion",
+          "s20": "Écran de recherche par catégories de jeux, « Mon hub » avec suivi de commande et articles, et écran d’ajout de carte bancaire",
+          "s21": "Merci"
+        }
+      },
+      "doctor": {
+        "title": "Doctor App",
+        "summary": "Une application mobile pour trouver un médecin et prendre rendez-vous",
+        "coverAlt": "Trois écrans de Doctor App : page d’accueil, onboarding « Avec nous, prenez soin de vous ! » et détails du médecin",
+        "role": "UX/UI Designer",
+        "field": "Santé",
+        "slides": {
+          "s1": "Couverture : Doctor App, « Trouver un médecin pour se soigner », avec l’écran d’accueil montrant les rendez-vous à venir, les spécialités et les médecins",
+          "s2": "Description du projet : une application mobile pour échanger et prendre rendez-vous avec des spécialistes, illustrée par une carte médecin",
+          "s3": "L’application en situation : un téléphone affichant Doctor App sur un bureau, et des photos de soignants souriants",
+          "s4": "Page d’accueil : salutation, barre de recherche, prochain rendez-vous, spécialités (pédiatrie, neurologie) et médecins recommandés",
+          "s5": "Page de recherche : liste de médecins avec spécialité, note et tarif par séance, et filtre par spécialité et localisation",
+          "s6": "Page détails du médecin avec ses statistiques et un calendrier de rendez-vous, et page de discussion avec le médecin",
+          "s7": "Merci : écrans d’accueil, d’onboarding et de détails du médecin"
+        }
+      },
+      "waterflow": {
+        "title": "Waterflow",
+        "summary": "Un dashboard pour suivre en temps réel des distributeurs d’eau potable connectés",
+        "coverAlt": "Waterflow : les pages Distributeurs (liste et carte) et Dashboard (indicateurs, volume d’eau distribué et heatmap) de la plateforme",
+        "role": "UX/UI Designer",
+        "field": "Accès à l’eau · IoT",
+        "slides": {
+          "s1": "Couverture : cas d’usage Waterflow, une mère donnant un verre d’eau à son bébé",
+          "s2": "Aperçu du projet : transformer l’accès à l’eau potable en Afrique de l’Ouest grâce à des filtres en terre cuite fabriqués par des artisanes, des distributeurs connectés (IoT) et une plateforme interne",
+          "s3": "Processus de design : découverte, définition, wireframes et design, test, et les outils utilisés (Figma, Notion, Miro, Jira, ChatGPT)",
+          "s4": "Persona Fama, 40 ans, responsable des opérations chez Anilaye’O à Thiès : veut une vue claire des performances et des alertes en temps réel, frustrée par les alertes tardives et le suivi manuel",
+          "s5": "Persona Amadou, 28 ans, technicien de maintenance à Thiès : veut repérer vite les distributeurs en panne et recevoir des alertes en temps réel",
+          "s6": "Carte d’empathie de Fama (dit, pense, fait, ressent), avec l’énoncé du problème et l’hypothèse",
+          "s7": "Questions « How might we » et idées retenues : état des distributeurs en temps réel, carte de leur emplacement et graphiques plus simples",
+          "s8": "Plan du site : connexion, dashboard, utilisateurs, distributeurs, revenus, notifications, paramètres et suivi des tâches",
+          "s9": "Guide de style : échelle typographique Outfit, couleurs de marque et couleurs d’état",
+          "s10": "Écran de connexion de la plateforme Waterflow",
+          "s11": "Dashboard : indicateurs clés (distributeurs actifs et inactifs, alertes en cours), volume d’eau distribué et heatmap du taux d’utilisation par région",
+          "s12": "Page Distributeurs : barre de recherche, liste des distributeurs avec leur statut (actif, maintenance, en panne) et carte",
+          "s13": "Merci : le site d’Anilaye’O et les pages Revenu, Utilisateurs et Maintenance du dashboard"
         }
       }
     },

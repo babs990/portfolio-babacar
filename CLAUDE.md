@@ -49,7 +49,7 @@ src/
       pipes/translate-pipe.ts
       models/                project, service, award, experience, nav-item, social-link, language, search-entry (+ index.ts barrel)
       constants/             nav-items, footer-links, social-links, languages, search-index, skills, gallery, contact, cv
-      data/                  services (4 entries), projects (Samba App), experiences (4, from the CV), awards (EDACY valedictorian)
+      data/                  services (4 entries), projects (Samba App, SenGame, Doctor App, Waterflow), experiences (4, from the CV), awards (EDACY valedictorian, Google UX Design certificate, Docsen e-health hackathon)
     layout/                  header, footer, language-switch, search-dialog, project-viewer (overlay)
     shared/
       ui/                    button (a[appButton]), social-icon-button, logo, marquee, project-card, share-menu (done); section-heading, container, chip (shells)
@@ -78,7 +78,7 @@ Docs: `docs/emailjs-setup.md` (contact form setup, in French, for the site owner
 - **Section anchors**: every section exposes `id="<name>"`, which is its file name without `-section` (`#services-preview`, `#faq`...). Router `anchorScrolling` is enabled. Keep these ids stable, because search depends on them.
 - **Search**: see the "Search" section below.
 - **Projects dropdown** in the header is generated from `PROJECTS` (`core/data/projects.ts`): one link per project to `/projects/:slug`. Adding a project adds it to the menu.
-- No logic in skeletons, and no fake data: `AWARDS` holds the real awards only (EDACY valedictorian for now). `PROJECTS` holds the real projects only (Samba App for now). `SERVICES` holds 4 services whose copy (`services.items.*`) is a **proposal awaiting validation** (the mock-up only had lorem ipsum). `SOCIAL_LINKS` holds the real LinkedIn + Behance URLs (an empty url would render the button without `href`).
+- No logic in skeletons, and no fake data: `AWARDS` holds the real awards only (EDACY valedictorian, Google UX Design certificate, Docsen e-health hackathon). `PROJECTS` holds the real projects only (Samba App, SenGame, Doctor App, Waterflow). `SERVICES` holds 4 services whose copy (`services.items.*`) is a **proposal awaiting validation** (the mock-up only had lorem ipsum). `SOCIAL_LINKS` holds the real LinkedIn + Behance URLs (an empty url would render the button without `href`).
 - TypeScript strict (`strictTemplates`, `noPropertyAccessFromIndexSignature`, `strictInputAccessModifiers`).
 - Production budgets: initial bundle warns at 500kB and errors at 1MB. **Per-component styles warn at 4kB and error at 8kB**. Prefer Tailwind utilities in templates. Shared CSS goes in `src/styles/`.
 - Component CSS files are NOT processed by Tailwind's entry. If a component stylesheet needs `@apply`/theme functions, add `@reference "../../../styles.css";` (relative path) at its top. Otherwise use `var(--token)`.
@@ -174,7 +174,7 @@ Cream section, id `selected-projects`, h2 "My portfolio" / "Mon portfolio" (`hom
   - Then the title (24px bold ink), centered over the summary (14px/20px, max 14rem).
   - Then a decorative 40px `btn-primary` circle with a ↗ arrow.
   - Hover: lift, surface wash, stronger border, the arrow nudges up-right and the circle lightens.
-- **Slots**: the grid always shows **4 slots**. The featured projects are repeated to fill them (`fillSlots`), as a TEMPORARY measure while only Samba App exists, and real projects replace the repeats automatically. A card shows only real `PROJECTS` data. There are no fake entries, and the header dropdown lists each project once.
+- **Slots**: the grid always shows **4 slots**. The featured projects are repeated to fill them (`fillSlots`), as a TEMPORARY measure while there are fewer than 4 projects, and real projects replace the repeats automatically. A card shows only real `PROJECTS` data. There are no fake entries, and the header dropdown lists each project once.
 - **Adding a project**: add the image to `assets/images/projects/`, an entry to `PROJECTS` (`slug`, `titleKey`, `summaryKey`, `cover`, `coverAltKey`, `tagKeys`, optional `year`, `featured`) and EN + FR copy in `projects.items.<id>`.
 - Lazy images only start loading on real scrolling. A headless screenshot that jumps with `scrollIntoView` shows them empty, which is not a bug.
 
@@ -227,8 +227,8 @@ Matches the Figma About page.
   - Reveal: the host gets `is-revealed` **once**, through an `IntersectionObserver` with `rootMargin: 0px 0px -15% 0px` (the host is `display: block`, required for the observer). Then the branch draws itself (scaleY), the nodes pop and the cards slide in from their side, staggered by `--i`. It is instant under reduced motion. Headless screenshots that jump to the section must add the class themselves.
 
 - **Awards & events** (`sections/awards-section`, id `awards`, search entry `/about#awards`): h2 `about.awards.title` (no intro text), then a row of **expanding photo cards**.
-  - Data: `AWARDS` (`core/data/awards.ts`, model `Award`): `titleKey`, `descriptionKey`, `issuerKey`, `date` (`YYYY-MM`, shown as a localized "Month YYYY"), `image {src, width, height, altKey}`, and an optional `url`. Images are in `assets/images/awards/`.
-  - **3 slots**: awards are repeated to fill them (`fillSlots`), as a TEMPORARY measure while only the EDACY award exists (the owner asked to duplicate it). Real awards take the slots automatically.
+  - Data: `AWARDS` (`core/data/awards.ts`, model `Award`): `titleKey`, `descriptionKey`, `issuerKey`, `date` (optional `YYYY-MM`, shown as a localized "Month YYYY"; when missing only the issuer shows — the Docsen hackathon date is still TODO), `image {src, width, height, altKey}`, and an optional `url`. Images are in `assets/images/awards/`.
+  - **3 slots**: awards are repeated to fill them (`fillSlots`), as a TEMPORARY measure while fewer than 3 awards exist (the owner asked to duplicate them). Real awards take the slots automatically.
   - Desktop (lg), matching Figma: a row 20.25rem tall with a 24px gap. **One card is open** (`active` signal, the first by default): its `flex-grow` is 1.69, so 546px vs 323px at 1440, measured in Chrome. **Hovering**, focusing (`tabindex="0"`) or clicking/tapping another card opens it and closes the previous one; the state stays on mouse leave.
   - Animations: the `flex-grow` transition takes 700ms ease-in-out-soft. The text fades in after a 250ms delay; it has a fixed **open width** (container query `100cqw` on `.awards`), so it never reflows while the card grows. The active photo zooms slightly and inactive ones are slightly desaturated.
   - Each card: a `NgOptimizedImage` `fill` photo with `object-fit: cover`, then a burgundy bottom fade (`.award__shade`), then white text: issuer · date, title (h3) and description.
@@ -270,7 +270,7 @@ There is no Figma for it, so it is built from the site's patterns.
 ## Project viewer (Behance-style case study)
 
 Files: `core/services/project-viewer.ts` (state), `layout/project-viewer` (overlay, mounted in `app.html`), `shared/ui/share-menu`.
-- **Data**: `Project.caseStudy` = `{ roleKey, fieldKey, slides: ProjectSlide[] }`, where each slide is `{ src, width, height, altKey }`. The Samba slides are 19 WebP at **2400px wide** (2.2 MB total) in `assets/images/projects/samba-app/`, converted from 5760px Figma PNG exports (67 MB) with a high-quality resize. Each slide has a translated alt text in `projects.items.samba.slides.sN`. The slide text itself is in English, as in Figma.
+- **Data**: `Project.caseStudy` = `{ roleKey, fieldKey, slides: ProjectSlide[] }`, where each slide is `{ src, width, height, altKey }`. The Samba slides are 19 WebP at **2400px wide** (2.2 MB total) in `assets/images/projects/samba-app/`, converted from 5760px Figma PNG exports (67 MB) with a high-quality resize. Each slide has a translated alt text in `projects.items.samba.slides.sN`. The slide text itself is in English, as in Figma. **SenGame** (`sengame-app`): 21 WebP slides at 2400px (1.8 MB) from 5443px exports, copy in `projects.items.sengame.*`, and its cover `projects/sengame-app.webp` is a 474×294 crop of the three-phone slide with rounded alpha corners (2× the card size). **Doctor App** (`doctor-app`, 7 slides 2400×1800, cover from the three-phone "Thanks" slide) and **Waterflow** (`waterflow`, 13 slides 2400×1350 from 5760px exports, Fama persona placed before Amadou; cover from the owner-provided "Waterflow" title + Dispensers & Dashboard image, cropped to the card ratio). Neither has a `year` yet.
 - **Opening**: `app-project-card` is a real `<a href="/projects/:slug">`.
   - A plain click calls `ProjectViewer.open(slug)`. The overlay opens **over the current page**, and the URL becomes `/projects/:slug` through `Location.go`: no router navigation, so the page underneath stays as is.
   - **Closing** (X button, Esc, click outside the sheet, or the browser Back button) restores the previous URL: `Location.back()`, and a `Location.subscribe` listener handles Back.
@@ -288,6 +288,10 @@ Files: `core/services/project-viewer.ts` (state), `layout/project-viewer` (overl
   - Options: native share sheet ("Share via…", when `navigator.share` exists), Copy link (Clipboard API with a `execCommand` fallback, plus a "Link copied!" toast and `role="status"`), LinkedIn, WhatsApp and e-mail.
   - It closes on outside click or Esc. Copy is in `projects.viewer.*`.
 - Verified in Chrome: card click opens it and changes the URL; Esc, Back and the X button all close it and restore the URL; a direct link opens it; it works on mobile.
+
+## Splash loader (`core/services/app-loader.ts` + `styles/loader.css`)
+
+`#app-loader` in `index.html` (cream screen, pulsing "bn" logo, sliding bar) covers the first load so the half-built page (header + footer stacked while the lazy route loads) is never seen. `<html class="is-loading">` locks scroll and pauses entrance animations in `<main>`. `AppLoader.hideWhenReady()` (called from `App`) waits for the first navigation end, a frame, `document.fonts.ready` and the decode of `main img[fetchpriority=high]` (LCP), capped at 5s, then fades it out and removes it. CSS failsafe: it hides itself after 8s if JS never runs.
 
 ## Custom scrollbar
 

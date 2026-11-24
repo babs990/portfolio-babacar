@@ -15,7 +15,7 @@ describe('About page', () => {
 
     expect(el.querySelectorAll('h1').length).toBe(1);
     expect(el.querySelector('h1')?.textContent).toContain('Serigne Khalifa Ababacar Sy Nguirane');
-    expect(el.querySelector('#about-intro p')?.textContent).toContain('Product UX/UI designer');
+    expect(el.querySelector('#about-intro p')?.textContent).toContain('Product UX/UI Designer');
     const cv = el.querySelector('a[appbutton]');
     expect(cv?.textContent).toContain('My CV');
     expect(cv?.getAttribute('href')).toBe(

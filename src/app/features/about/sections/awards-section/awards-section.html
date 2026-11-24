@@ -28,8 +28,10 @@
 
           <div class="award__content">
             <p class="text-xs font-medium text-white/80">
-              {{ award.issuerKey | translate }} ·
-              <time [attr.datetime]="award.date">{{ award.when }}</time>
+              {{ award.issuerKey | translate }}
+              @if (award.when) {
+                · <time [attr.datetime]="award.date">{{ award.when }}</time>
+              }
             </p>
             <h3 class="mt-1.5 text-xl leading-snug font-bold text-white lg:text-[1.375rem]">
               {{ award.titleKey | translate }}

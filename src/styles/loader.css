@@ -1,0 +1,91 @@
+/*
+ * Splash screen shown on first load (markup in index.html).
+ * It covers the page until the first route, the fonts and the hero image are ready,
+ * so nothing is seen half-styled. core/services/app-loader.ts fades it out (.is-done)
+ * and removes it. Failsafe: if JS never runs, it hides itself after 8s.
+ */
+html.is-loading {
+  overflow: hidden;
+}
+
+/* Entrance animations wait behind the splash, so they play when it lifts. */
+html.is-loading main * {
+  animation-play-state: paused !important;
+}
+
+.app-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background: var(--color-background);
+  color: var(--color-primary);
+  transition:
+    opacity var(--duration-slow) var(--ease-out-soft),
+    visibility 0s linear var(--duration-slow);
+  animation: loader-failsafe 0s linear 8s forwards;
+}
+
+.app-loader.is-done {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.app-loader__logo {
+  width: 4.5rem;
+  height: 4.5rem;
+  animation: loader-pulse 1.4s var(--ease-in-out-soft) infinite;
+}
+
+.app-loader__bar {
+  position: relative;
+  width: 6rem;
+  height: 2px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--color-line);
+}
+
+.app-loader__bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  border-radius: inherit;
+  background: var(--color-primary);
+  animation: loader-slide 1.1s var(--ease-in-out-soft) infinite;
+}
+
+@keyframes loader-pulse {
+  50% {
+    opacity: 0.55;
+    transform: scale(0.94);
+  }
+}
+
+@keyframes loader-slide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+@keyframes loader-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-loader__logo,
+  .app-loader__bar::after {
+    animation: none;
+  }
+}

@@ -20,19 +20,35 @@ describe('Projects page', () => {
     expect(el.querySelector('h1')?.textContent).toContain('Mes projets');
 
     const cards = el.querySelectorAll('app-project-card');
-    expect(cards.length).toBe(1);
-    expect(cards[0].querySelector('a')?.getAttribute('href')).toBe('/projects/samba-app');
+    expect(cards.length).toBe(4);
+    expect(Array.from(cards, (c) => c.querySelector('a')?.getAttribute('href'))).toEqual([
+      '/projects/samba-app',
+      '/projects/sengame-app',
+      '/projects/doctor-app',
+      '/projects/waterflow',
+    ]);
 
     const chips = Array.from(el.querySelectorAll<HTMLButtonElement>('.chip'));
-    expect(chips.map((c) => c.textContent?.trim())).toEqual(['Tous', 'Design mobile', 'UX Design']);
+    expect(chips.map((c) => c.textContent?.trim())).toEqual([
+      'Tous',
+      'Design mobile',
+      'UX Design',
+      'Recherche',
+      'Vision produit',
+    ]);
     expect(chips[0].getAttribute('aria-pressed')).toBe('true');
-    expect(el.querySelector('[aria-live]')?.textContent?.trim()).toBe('1 projet');
+    expect(el.querySelector('[aria-live]')?.textContent?.trim()).toBe('4 projets');
 
-    chips[1].click();
+    // Only SenGame and Waterflow are tagged "Recherche".
+    chips[3].click();
     await fixture.whenStable();
-    expect(chips[1].getAttribute('aria-pressed')).toBe('true');
+    expect(chips[3].getAttribute('aria-pressed')).toBe('true');
     expect(chips[0].getAttribute('aria-pressed')).toBe('false');
-    expect(el.querySelectorAll('app-project-card').length).toBe(1);
+    const filtered = el.querySelectorAll('app-project-card');
+    expect(Array.from(filtered, (c) => c.querySelector('a')?.getAttribute('href'))).toEqual([
+      '/projects/sengame-app',
+      '/projects/waterflow',
+    ]);
     expect(el.querySelector('app-contact-cta-section form')).toBeTruthy();
   });
 });

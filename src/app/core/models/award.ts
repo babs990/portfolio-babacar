@@ -5,8 +5,8 @@ export interface Award {
   readonly descriptionKey: string;
   /** Organizer / issuer (e.g. "EDACY · Talent 4 Startups"). */
   readonly issuerKey: string;
-  /** Month of the award, `YYYY-MM`. */
-  readonly date: string;
+  /** Month of the award, `YYYY-MM`. Omitted while unknown (only the issuer is shown). */
+  readonly date?: string;
   readonly image: {
     /** Path relative to `assets/images/`. */
     readonly src: string;

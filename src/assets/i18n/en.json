@@ -29,7 +29,7 @@
   "hero": {
     "greeting": "Hey there, I'm",
     "name": "Serigne Khalifa Ababacar Sy Nguirane",
-    "tagline": "Passionate about crafting intuitive, modern web and mobile interfaces, I help companies build high-impact digital solutions, backed by a rigorous user-centered design approach.",
+    "tagline": "I don’t just design screens: I design products that people understand and actually use. I help companies turn a need into a high-impact digital solution, through a rigorous, user-centered approach.",
     "photoAlt": "Serigne Khalifa Ababacar Sy Nguirane smiling, holding a laptop and a cup of coffee, surrounded by UX design, business goal, user research and product keywords"
   },
   "skills": {
@@ -74,7 +74,7 @@
     }
   },
   "about": {
-    "intro": "I am a Product UX/UI designer. I help companies design modern, user-centered technology. Thanks to my analytical and strategic skills, I have had the opportunity to contribute to large-scale projects, including the platform of Senegal’s National Assembly.",
+    "intro": "I am a Product UX/UI Designer. I help companies design modern, clear, user-centered digital products. Thanks to my analytical and strategic skills, I have had the opportunity to contribute to large-scale projects across a variety of sectors and contexts.",
     "cv": "My CV",
     "cvLabel": "My CV (PDF, opens in a new tab)",
     "experience": {
@@ -108,6 +108,18 @@
           "issuer": "EDACY · Talent 4 Startups",
           "description": "Top of cohort 3 of the Product Design (UX/UI) program, an award presented in Dakar for “Discipline, Rigor and Excellence”.",
           "imageAlt": "EDACY glass trophy “Cohort 3 – Top of the Product Design (UX/UI) program” awarded to Serigne Khalifa A S Nguirane, Dakar, October 2025"
+        },
+        "googleUx": {
+          "title": "Google UX Design Professional Certificate",
+          "issuer": "Google · Coursera",
+          "description": "A seven-course program designed by Google, covering the whole design process: empathizing with users, defining problems, ideation, wireframes, prototypes, high-fidelity mockups in Figma and testing to gather feedback.",
+          "imageAlt": "Black-and-white portrait of Serigne Khalifa Ababacar Sy Nguirane wearing glasses and a polo shirt, against a light wall"
+        },
+        "docsenHackathon": {
+          "title": "Participant in Senegal’s first e-health hackathon",
+          "issuer": "Docsen · E-health hackathon",
+          "description": "With the KAHFI team, I presented OneHealthID, a solution to give every citizen a unique health identity, and talked with healthcare professionals to better understand the challenges of e-health.",
+          "imageAlt": "Serigne Khalifa Ababacar Sy Nguirane, microphone in hand, presenting OneHealthID with a KAHFI teammate, both wearing red OneHealthID T-shirts, in front of the partners’ banner"
         }
       }
     }
@@ -117,7 +129,7 @@
       "eyebrow": "My process",
       "titleLine1": "I don’t start by drawing.",
       "titleLine2": "I start by understanding.",
-      "text": "Mobile apps, web platforms and back-offices for entrepreneurs, companies and institutions across West Africa: designed around the people who will use them.",
+      "text": "I design digital products, apps, platforms and management tools, for entrepreneurs, companies and institutions, starting from the people who will use them.",
       "cta": "My process",
       "imageAlt": "User flow of the Samba app: from opening the app to the home screen, then map, search, Samba AI (chat or voice), viewing a destination and guide mode"
     },
@@ -198,6 +210,74 @@
           "s17": "Prototype – voice discussion: talking to Samba and getting a voice answer with suggestions",
           "s18": "Prototype – map and places: interactive map of tourist sites and the Lac Rose detail page",
           "s19": "Thank you: splash, welcome and login screens of the Samba app"
+        }
+      },
+      "sengame": {
+        "title": "SenGame",
+        "summary": "A mobile app to buy gaming equipment in Senegal",
+        "coverAlt": "Three screens of the SenGame mobile app: shopping cart, catalog and home page",
+        "role": "UX Designer",
+        "field": "E-commerce · Gaming",
+        "slides": {
+          "s1": "Cover: SenGame, a gaming equipment sales application, illustrated by a robot wearing a VR headset",
+          "s2": "Three SenGame screens: shopping cart, catalog and home page “Discover the best e-gaming products in Senegal”",
+          "s3": "Project overview: a mobile app for video game enthusiasts, 1.5-month project, problem “how to buy gaming products online?”, role of UX designer",
+          "s4": "User research: secondary research based on data collected by Game Hub Senegal",
+          "s5": "Pain points: 60% of players in Senegal do not spend money on gaming, most have no bank card, and difficult navigation makes people give up",
+          "s6": "Persona Matar, 22, student in Dakar, passionate about video games: wants to buy gaming equipment, skeptical about online shopping",
+          "s7": "Persona Sokhna, 38, entrepreneur and mother of two: wants to buy games for her children, has little knowledge of video games and e-commerce",
+          "s8": "User journey map for Matar: choose a product, view the cart, validate the purchase and track the order, with tasks, emotions and improvements",
+          "s9": "User journey map for Sokhna: the same four steps, with suggestions added to guide her choice",
+          "s10": "Hand-drawn storyboard: Matar is bored at home, downloads SenGame, picks equipment, waits for delivery and is happy to play",
+          "s11": "User flow for buying equipment: home, catalog or search, product, cart, validation, payment",
+          "s12": "Information architecture: home, account, catalog, cart and other sections with their sub-pages",
+          "s13": "Paper wireframes of the home, catalog and cart pages",
+          "s14": "Digital wireframes of the home, catalog and cart pages made in Figma",
+          "s15": "Mockups of the home, catalog and cart pages",
+          "s16": "Catalog mockup: search bar, filters (new, popular, promo), latest collections and categories",
+          "s17": "Shopping cart mockup: product cards with quantity, total and “Validate purchase” button",
+          "s18": "Product details mockup: PlayStation 5 with photo carousel, rating, description and “Buy now” button",
+          "s19": "Splash screen, onboarding “The video game market, simple and secure” and login screen",
+          "s20": "Search screen with game categories, “My hub” for order tracking and articles, and add a bank card screen",
+          "s21": "Thank you"
+        }
+      },
+      "doctor": {
+        "title": "Doctor App",
+        "summary": "A mobile app to find a doctor and book an appointment",
+        "coverAlt": "Three Doctor App screens: home page, onboarding “Take care of yourself with us!” and doctor details",
+        "role": "UX/UI Designer",
+        "field": "Health",
+        "slides": {
+          "s1": "Cover: Doctor App, “Find a doctor to receive treatment”, with the home screen showing upcoming appointments, specialties and doctors",
+          "s2": "Project description: a mobile app to communicate and make appointments with medical specialists, illustrated by a doctor card",
+          "s3": "The app in context: a phone showing Doctor App on a desk, and photos of smiling healthcare workers",
+          "s4": "Home page: greeting, search bar, upcoming appointment, specialties (pediatrics, neurology) and recommended doctors",
+          "s5": "Search page: list of doctors with specialty, rating and price per session, and a filter by specialty and location",
+          "s6": "Doctor details page with stats and an appointment calendar, and a chat page with the doctor",
+          "s7": "Thanks for watching: home, onboarding and doctor details screens"
+        }
+      },
+      "waterflow": {
+        "title": "Waterflow",
+        "summary": "A dashboard to monitor connected drinking-water dispensers in real time",
+        "coverAlt": "Waterflow: the Dispensers page (list and map) and the Dashboard page (KPIs, volume of water distributed and heatmap) of the platform",
+        "role": "UX/UI Designer",
+        "field": "Water access · IoT",
+        "slides": {
+          "s1": "Cover: Waterflow use case, a mother giving her baby a glass of water",
+          "s2": "Project overview: transforming access to drinking water in West Africa with terracotta filters made by women artisans, IoT dispensers and an internal platform",
+          "s3": "Design process: discovery, define, wireframe & design, test, and the tools used (Figma, Notion, Miro, Jira, ChatGPT)",
+          "s4": "Persona Fama, 40, operations manager at Anilaye’O in Thiès: wants a clear view of performance and real-time alerts, frustrated by late alerts and manual follow-up",
+          "s5": "Persona Amadou, 28, maintenance technician in Thiès: wants to quickly spot faulty dispensers and receive real-time alerts",
+          "s6": "Empathy map of Fama (says, thinks, does, feels), with the problem statement and the assumption",
+          "s7": "“How might we” questions and selected ideas: real-time status of dispensers, a map of their locations and simpler graphs",
+          "s8": "Sitemap: login, dashboard, users, dispensers, revenue, notifications, settings and task tracking",
+          "s9": "Style guide: Outfit typography scale, brand colors and state colors",
+          "s10": "Login screen of the Waterflow platform",
+          "s11": "Dashboard: KPIs (active and inactive dispensers, ongoing alerts), volume of water distributed and a heatmap of the usage rate by region",
+          "s12": "Dispensers page: search bar, list of dispensers with their status (active, maintenance, out of order) and a map",
+          "s13": "Thank you: the Anilaye’O website and the Revenue, Users and Maintenance pages of the dashboard"
         }
       }
     },
