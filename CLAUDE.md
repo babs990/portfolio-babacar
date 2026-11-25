@@ -170,7 +170,7 @@ Cream section, id `selected-projects`, h2 "My portfolio" / "Mon portfolio" (`hom
 - **Header row**: h2 on the left. On the right, a primary text link "See more →" → `/projects` (16px, `.see-more-link`, the arrow slides on hover).
 - **Grid**: 2 × 2 cards at lg (`gap-x-7 gap-y-[1.875rem]`), 1 column below.
 - **Cards** (shared `app-project-card`, `shared/ui/project-card`, also used by the Projects page): each card is a whole `<a>` to `/projects/:slug`, with a 1px `border-line`, 2rem radius and `p-5`.
-  - The cover is `assets/images/<project.cover>`, 237×147 at sm+ and full width on mobile, lazy-loaded through `NgOptimizedImage`. The cover image includes its own white rounded backdrop, with alpha.
+  - The cover is `assets/images/<project.cover>`, 237×147 at sm+ and full width on mobile, lazy-loaded through `NgOptimizedImage`, with a **33px corner radius** (`rounded-[2.0625rem]`, set by the owner) applied in CSS to every cover.
   - Then the title (24px bold ink), centered over the summary (14px/20px, max 14rem).
   - Then a decorative 40px `btn-primary` circle with a ↗ arrow.
   - Hover: lift, surface wash, stronger border, the arrow nudges up-right and the circle lightens.
