@@ -20,11 +20,11 @@ export interface EmailJsConfig {
   readonly autoReplyTemplateId: string;
 }
 
-/** TODO: fill after creating the EmailJS account (see docs/emailjs-setup.md). */
+/** EmailJS account (see docs/emailjs-setup.md). TODO: add `autoReplyTemplateId` once created. */
 export const EMAILJS_CONFIG: EmailJsConfig = {
-  publicKey: '',
-  serviceId: '',
-  ownerTemplateId: '',
+  publicKey: 'HmM4ag0cPsBJnnuV0',
+  serviceId: 'service_ui4urr8',
+  ownerTemplateId: 'template_2x9woti',
   autoReplyTemplateId: '',
 };
 
